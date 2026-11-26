@@ -149,8 +149,8 @@ footer{padding-block:10px 40px}
 <footer class="g"><div class="wrap src">Tappa pilota · prototipo, non ancora la versione definitiva</div></footer>
 </main>
 
-<script src="dati.js?v=9"></script>
-<script src="disegni.js?v=9"></script>
+<script src="dati.js?v=10"></script>
+<script src="disegni.js?v=10"></script>
 <script>
 {
 const D=window.DOM,$=id=>document.getElementById(id);
@@ -172,8 +172,13 @@ $('avv').textContent=D.avviso;
 
 /* voce */
 const synth=window.speechSynthesis;let cur=null;
-const stop=()=>{try{synth&&synth.cancel()}catch(e){}if(cur){cur.btn.classList.remove('on');cur.btn.innerHTML=cur.lab;cur.box.querySelectorAll('p.on').forEach(p=>p.classList.remove('on'))}cur=null};
-const play=(btn,box,paras)=>{if(cur&&cur.btn===btn){stop();return}stop();
+let snd=null;
+const stop=()=>{try{synth&&synth.cancel()}catch(e){}if(snd){snd.pause();snd=null}if(cur){cur.btn.classList.remove('on');cur.btn.innerHTML=cur.lab;cur.box.querySelectorAll('p.on').forEach(p=>p.classList.remove('on'))}cur=null};
+const play=(btn,box,paras,src)=>{if(cur&&cur.btn===btn){stop();return}stop();
+ if(src){cur={btn,box,lab:btn.innerHTML};btn.classList.add('on');btn.innerHTML='❚❚ Pausa';const me=cur;
+  const ps=[...box.querySelectorAll('.txt p')],len=paras.map(p=>plain(p).length),tot=len.reduce((a,b)=>a+b,0);
+  snd=new Audio(src);snd.ontimeupdate=()=>{if(cur!==me||!snd.duration)return;const f=snd.currentTime/snd.duration*tot;let s=0,k=0;while(k<len.length-1&&s+len[k]<f){s+=len[k];k++}ps.forEach((p,j)=>p.classList.toggle('on',j===k))};
+  snd.onended=()=>{if(cur===me)stop()};snd.onerror=()=>{if(cur===me){stop();btn.textContent='Audio non disponibile'}};snd.play().catch(()=>{if(cur===me)stop()});return}
  if(!synth){btn.textContent='Voce non disponibile';return}
  cur={btn,box,lab:btn.innerHTML};btn.classList.add('on');btn.innerHTML='❚❚ Pausa';
  const ps=box.querySelectorAll('.txt p');let i=0;const me=cur;
@@ -184,7 +189,7 @@ const play=(btn,box,paras)=>{if(cur&&cur.btn===btn){stop();return}stop();
 
 /* fuori */
 $('fuori').innerHTML=D.fuori.map(c=>`<div class="ch" id="${c.id}"><div class="ch-h"><h3>${esc(c.titolo)} <span class="meta" style="font-weight:400">· ${c.min} min</span></h3><button class="play">▶ Ascolta</button></div>${c.foto?fig(c.foto):''}<div class="txt">${c.testo.map(p=>`<p>${fmt(p)}</p>`).join('')}</div></div>`).join('');
-D.fuori.forEach(c=>{const box=$(c.id);box.querySelector('.play').onclick=e=>play(e.currentTarget,box,c.testo)});
+D.fuori.forEach(c=>{const box=$(c.id);box.querySelector('.play').onclick=e=>play(e.currentTarget,box,c.testo,D.audio&&D.audio[c.id])});
 
 /* pianta + zone */
 const visti=new Set();let curZ=0;
@@ -201,7 +206,7 @@ const open=(n,scroll,quiet)=>{if(curZ&&n&&!quiet)visti.add(curZ);curZ=quiet?0:(n
  document.querySelectorAll('.mk').forEach(m=>m.classList.toggle('on',+m.dataset.n===n));
  const z=D.zone.find(z=>z.n===n);if(!quiet){document.querySelector('.bar small').textContent=n?'Siete qui':'Prossimo ritrovo';$('ritrovo').textContent=n?('Dentro il Duomo · zona '+n+': '+z.nome):'Sul sagrato del Mariendom, davanti alla torre'}
  if(scroll&&n)$('z'+n).scrollIntoView({behavior:'smooth',block:'start'})};
-D.zone.forEach(z=>{const a=$('z'+z.n);a.querySelector('.zh').onclick=()=>{stop();open(a.classList.contains('on')?0:z.n,false)};a.querySelector('.play').onclick=e=>play(e.currentTarget,a,z.testo)});
+D.zone.forEach(z=>{const a=$('z'+z.n);a.querySelector('.zh').onclick=()=>{stop();open(a.classList.contains('on')?0:z.n,false)};a.querySelector('.play').onclick=e=>play(e.currentTarget,a,z.testo,D.audio&&D.audio['z'+z.n])});
 $('zone').addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g){stop();open(+g.dataset.go,true)}});
 $('zone').addEventListener('change',e=>{const k=e.target.dataset.k;if(!k)return;checks[k]=e.target.checked;try{localStorage.setItem('chkD',JSON.stringify(checks))}catch(err){}});
 open(1,false,true);

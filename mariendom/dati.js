@@ -175,3 +175,6 @@ window.DOM.foto={
  oggi:{src:'foto/oggi.jpg',cap:'Oggi, dal Domplatz: la torre è finita (nella foto è in restauro).',autore:'Leonhard Lenz',licenza:'CC0',link:'https://commons.wikimedia.org/wiki/File:Mariendom_Linz_2023-09-29_01.jpg',anno:'2023'}
 };
 window.DOM.ieriOggi.nota='Le due foto sono prese da punti diversi: nel 1898 dal lato del coro, oggi dal Domplatz.';
+
+/* audio registrati (voce di Francesca). Le parti senza file usano la voce del telefono. */
+window.DOM.audio={f1:'audio/mariendom-01-guardate.mp3'};
