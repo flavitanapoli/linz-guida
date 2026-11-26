@@ -39,6 +39,13 @@ summary{min-height:54px;display:flex;align-items:center;padding:8px 14px;border-
 summary::-webkit-details-marker{display:none}
 details img{display:block;width:100%;height:auto;margin-top:10px;border-radius:12px;border:1px solid var(--line);background:#fff}
 footer{color:var(--soft);font-size:.85rem;padding-block:24px 40px}
+
+.off{margin:12px 0;padding:12px 14px;border-radius:14px;border:2px solid var(--line);background:var(--panel)}
+.off[hidden]{display:none}
+.off button{display:block;width:100%;min-height:56px;border:0;border-radius:14px;background:var(--ink);color:var(--bg);font:inherit;font-weight:800}
+.off button.sm{display:inline;width:auto;min-height:0;background:none;color:var(--soft);text-decoration:underline;font-weight:600;padding:6px 0}
+.off p{margin:6px 0 0;font-size:.92rem}.off .ok{font-weight:800;margin:0}
+.off .barra{height:12px;border-radius:6px;background:var(--line);overflow:hidden;margin-top:8px}.off .barra i{display:block;height:100%;width:0;background:var(--red)}
 </style>
 </head><body>
 <header class="top g"><div class="wrap">
@@ -47,6 +54,7 @@ footer{color:var(--soft);font-size:.85rem;padding-block:24px 40px}
   <p>Sei tappe a piedi nel centro, circa 2 km. A ogni tappa una voce che racconta.</p>
 </div></header>
 <main class="g"><div class="wrap">
+  <div class="off" id="off" hidden></div>
   <p class="cuf">🎧 Per ascoltare i racconti servono cuffie o auricolari collegati al telefono.</p>
   <h2>Le tappe</h2>
   <ol class="t" id="tappe"></ol>
@@ -67,5 +75,37 @@ const T=[
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 document.getElementById('tappe').innerHTML=T.map(t=>{const inner=`<span class="n">${t.n}</span><span><b>${esc(t.nome)}</b><small>${esc(t.sub)} · circa ${t.min} min${t.url?'':' · in preparazione'}</small></span>`;
  return `<li>${t.url?`<a href="${t.url}">${inner}<span class="go" aria-hidden="true">→</span></a>`:`<div class="x">${inner}</div>`}</li>`}).join('');
+
+/* SCARICA LA GUIDA: con il wifi si salva tutto sul telefono (cache "linz-guida", servita da sw.js) */
+{
+const box=document.getElementById('off'),CN='linz-guida';
+const ok=('serviceWorker' in navigator)&&('caches' in window)&&window.isSecureContext&&/^https?:$/.test(location.protocol);
+const abs=(base,f)=>new URL(f,new URL(base,location.href)).href;
+/* l'elenco dei file di una tappa si ricava dalla sua pagina e dal suo dati.js */
+const tappa=async dir=>{const s=new Set([abs(dir,'./'),abs(dir,'index.html')]);
+ const html=await (await fetch(dir+'index.html',{cache:'reload'})).text();const src=[...html.matchAll(/<script src="([^"]+)"/g)].map(m=>m[1]);
+ src.forEach(x=>s.add(abs(dir,x)));const w={};const d=src.find(x=>/^dati\.js/.test(x));
+ if(d){new Function('window',await (await fetch(dir+d,{cache:'reload'})).text())(w);const D=w.DOM||{};
+  Object.values(D.audio||{}).forEach(a=>s.add(abs(dir,a)));Object.values(D.musica||{}).forEach(m=>s.add(abs(dir,m.src)));
+  Object.values(D.foto||{}).forEach(f=>s.add(abs(dir,f.src)));if(D.mappa)s.add(abs(dir,D.mappa.img))}
+ return s};
+const list=async()=>{const s=new Set([abs('./','./'),abs('./','index.html')]);
+ for(const t of T.filter(t=>t.url)){(await tappa(t.url)).forEach(x=>s.add(x))}
+ document.querySelectorAll('audio[src],img[src]').forEach(x=>s.add(x.src));return [...s]};
+const ios=/iPhone|iPad|iPod/.test(navigator.userAgent);
+const nota=ios?'<p>Su iPhone scaricatela pochi giorni prima della gita: dopo molti giorni senza aprirla, il telefono può cancellarla.</p>':'';
+const view=(st,x)=>{
+ if(st==='no')box.innerHTML='<button id="offGo">📥 Scarica la guida sul telefono</button><p>Fatelo con il wifi, per esempio in albergo. Poi la guida funziona anche senza internet, con audio e foto.</p>';
+ if(st==='run')box.innerHTML=`<p class="ok">📥 Scarico la guida… ${x.i} di ${x.n}</p><div class="barra"><i style="width:${Math.round(x.i/x.n*100)}%"></i></div><p>Lasciate la pagina aperta fino alla fine.</p>`;
+ if(st==='si')box.innerHTML=`<p class="ok">✓ Guida scaricata: funziona anche senza internet.</p>${nota}<button class="sm" id="offGo">Scarica di nuovo</button>`;
+ if(st==='err')box.innerHTML='<p class="ok">Download non completato.</p><p>Controllate di essere collegati al wifi e riprovate.</p><button id="offGo">Riprova</button>';
+ const b=document.getElementById('offGo');if(b)b.onclick=get};
+const check=async()=>{try{const L=await list(),c=await caches.open(CN);for(const f of L){if(!(await c.match(f)))return view('no')}view('si')}catch(e){view('no')}};
+const get=async()=>{view('run',{i:0,n:1});try{const L=await list(),c=await caches.open(CN);let i=0;view('run',{i,n:L.length});
+  try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+  for(const f of L){const r=await fetch(f,{cache:'reload'});if(!r.ok)throw new Error(f);await c.put(f,r);i++;view('run',{i,n:L.length})}
+  view('si')}catch(e){view('err')}};
+if(ok)navigator.serviceWorker.register('sw.js',{scope:'./'}).then(()=>{box.hidden=false;view('no');check()}).catch(()=>{});
+}
 </script>
 </body></html>
