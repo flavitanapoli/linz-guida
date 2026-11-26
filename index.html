@@ -1,1 +1,71 @@
-<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cammino Sonoro di Linz</title><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=mariendom/"></head><body><p><a href="mariendom/">Apri la tappa del Mariendom</a></p></body></html>
+<!doctype html>
+<html lang="it"><head>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<title>Cammino Sonoro di Linz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Alegreya+SC:wght@700&display=swap" rel="stylesheet">
+<style>
+/* Pagina iniziale della guida: le sei tappe in fila, come l'indice di un libretto di pellegrinaggio.
+   Stessi colori e caratteri della tappa del Mariendom. */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#16110f);--ink:light-dark(#1b1513,#f3ece8);--soft:light-dark(#5e534f,#c4b8b2);--red:light-dark(#b0152b,#ff6b7a);--redbg:light-dark(#b0152b,#5a0d17);--panel:light-dark(#f7f2f0,#221a17);--line:light-dark(#e4d9d5,#3b2f2b)}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{font-size:19px}
+body{background:var(--bg);color:var(--ink);font:1rem/1.6 "Atkinson Hyperlegible",system-ui,sans-serif;margin:0;overflow-x:clip}
+.g{padding-left:max(5vw,16px,env(safe-area-inset-left,0px));padding-right:max(5vw,16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:720px;margin:0 auto}
+.top{background:var(--redbg);color:#fff;padding-top:calc(18px + env(safe-area-inset-top,0px));padding-bottom:18px}
+.top .k{font-weight:700;opacity:.9}
+h1,h2{font-family:"Alegreya SC",Georgia,serif;line-height:1.08;margin:0}
+h1{font-size:clamp(2.1rem,9vw,3rem)}
+h2{font-size:1.5rem;margin:1.4em 0 .4em}
+p{margin:.55em 0}
+a{color:var(--red)}
+.cuf{color:var(--soft);font-size:.92rem}
+ol.t{list-style:none;padding:0;margin:8px 0 0}
+ol.t li{margin:10px 0}
+ol.t a,ol.t .x{display:flex;gap:14px;align-items:center;padding:12px 14px;border:2px solid var(--line);border-radius:16px;color:var(--ink);text-decoration:none;min-height:72px}
+ol.t a{border-color:var(--red)}
+ol.t .n{flex:none;width:44px;height:44px;border-radius:50%;background:var(--red);color:var(--bg);display:grid;place-items:center;font-weight:800;font-size:1.1rem}
+ol.t .x .n{background:var(--soft)}
+ol.t b{display:block;font-size:1.1rem;line-height:1.25}
+ol.t small{display:block;color:var(--soft);font-size:.85rem;line-height:1.3}
+ol.t .go{margin-left:auto;font-weight:800;color:var(--red);font-size:1.3rem}
+.pr{background:var(--panel);border-radius:16px;padding:12px 16px;margin-top:14px}
+details{margin:12px 0}
+summary{min-height:54px;display:flex;align-items:center;padding:8px 14px;border-radius:12px;background:var(--panel);font-weight:700;cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+details img{display:block;width:100%;height:auto;margin-top:10px;border-radius:12px;border:1px solid var(--line);background:#fff}
+footer{color:var(--soft);font-size:.85rem;padding-block:24px 40px}
+</style>
+</head><body>
+<header class="top g"><div class="wrap">
+  <div class="k">La guida del gruppo · martedì a Linz</div>
+  <h1>Cammino Sonoro di Linz</h1>
+  <p>Sei tappe a piedi nel centro, circa 2 km. A ogni tappa una voce che racconta.</p>
+</div></header>
+<main class="g"><div class="wrap">
+  <p class="cuf">🎧 Per ascoltare i racconti servono cuffie o auricolari collegati al telefono.</p>
+  <h2>Le tappe</h2>
+  <ol class="t" id="tappe"></ol>
+  <div class="pr"><b>🍴 Pranzo</b><br>Vapiano, Schmidtorstraße 1, all'angolo con l'Hauptplatz.</div>
+  <details><summary>🗺 La mappa del percorso</summary><img src="mariendom/foto/mappa.svg" alt="Mappa del percorso a piedi con le sei tappe"></details>
+  <details><summary>♪ Perché «Cammino Sonoro»</summary><p>Linz è una città che si racconta con la musica. Bruckner fu per tredici anni organista del Duomo Vecchio. Mozart qui scrisse in quattro o cinque giorni la Sinfonia «Linz». Keplero qui pubblicò «L'armonia del mondo». E dal 1979 la Klangwolke, la «nuvola sonora», porta la musica sul Danubio. Per questo la visitiamo così: camminando e ascoltando.</p></details>
+</div></main>
+<footer class="g"><div class="wrap">Per qualsiasi problema scrivete nel gruppo WhatsApp della gita.</div></footer>
+<script>
+/* le tappe: url vuoto = pagina non ancora pronta */
+const T=[
+ {n:1,nome:'Hauptplatz',sub:'La piazza, la colonna e l\'elefante',min:10,url:''},
+ {n:2,nome:'Landhaus',sub:'Il cortile di Keplero',min:9,url:''},
+ {n:3,nome:'Altstadt e Hofgasse',sub:'Dove nacque Linz',min:8,url:''},
+ {n:4,nome:'Mozarthaus',sub:'Una sinfonia in quattro giorni',min:8,url:''},
+ {n:5,nome:'Alter Dom',sub:'La chiesa di Bruckner',min:9,url:''},
+ {n:6,nome:'Mariendom',sub:'Il Duomo Nuovo, la chiesa più grande d\'Austria',min:37,url:'mariendom/'}];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+document.getElementById('tappe').innerHTML=T.map(t=>{const inner=`<span class="n">${t.n}</span><span><b>${esc(t.nome)}</b><small>${esc(t.sub)} · circa ${t.min} min${t.url?'':' · in preparazione'}</small></span>`;
+ return `<li>${t.url?`<a href="${t.url}">${inner}<span class="go" aria-hidden="true">→</span></a>`:`<div class="x">${inner}</div>`}</li>`}).join('');
+</script>
+</body></html>
