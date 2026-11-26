@@ -177,4 +177,4 @@ window.DOM.foto={
 window.DOM.ieriOggi.nota='Le due foto sono prese da punti diversi: nel 1898 dal lato del coro, oggi dal Domplatz.';
 
 /* audio registrati (voce di Francesca). Le parti senza file usano la voce del telefono. */
-window.DOM.audio={f1:'audio/mariendom-01-guardate.mp3'};
+window.DOM.audio={f1:'audio/mariendom-01-guardate.mp3',f2:'audio/mariendom-02-storia.mp3',f3:'audio/mariendom-03-campane.mp3',z1:'audio/mariendom-z1-ingresso.mp3'};
