@@ -24,6 +24,8 @@ p{margin:0 0 .38em}
 .mini{background:var(--ivory);border-radius:3mm;padding:1.5mm}
 .mini svg{width:100%;height:auto;display:block}
 .mini .cap{font-size:6.5pt;color:var(--grey);text-align:center;margin-top:.6mm;line-height:1.2}
+.ph{margin:3mm 0 1mm;border-radius:2.5mm;overflow:hidden}.ph img{display:block;width:100%;height:100%;object-fit:cover}
+.cover .ph{margin:8mm 12mm 0}
 .slot{clear:none;border:1pt dashed var(--grey);border-radius:2.5mm;background:repeating-linear-gradient(135deg,#fff 0 6px,#f8f4ee 6px 12px);display:flex;align-items:center;justify-content:center;flex-direction:column;color:var(--grey);font-size:8.5pt;text-align:center;padding:2mm;margin:3mm 0 1mm}
 .slot b{color:var(--ink);font-weight:700;font-size:9pt}
 .look{clear:both;background:var(--ivory);border-radius:2.5mm;padding:2.2mm 3.5mm;margin-top:2mm}
@@ -76,7 +78,9 @@ const fmt=s=>esc(s).replace(/\[v(?::\s*([^\]]*))?\]/g,(m,t)=>' <span class="v">d
 const P=t=>t.map(p=>`<p>${fmt(p)}</p>`).join('');
 let page=0;
 const foot=()=>{page++;return `<div class="foot"><span>Mariendom · Guida alla visita</span><span>${page}</span></div>`};
-const slot=(k,h)=>`<div class="slot" style="height:${h}mm">${I.foto}<b>Foto: ${esc(D.fotoSlot[k]||k)}</b><span>Wikimedia Commons, con autore e licenza</span></div>`;
+const ph=(k,h)=>{const p=D.foto&&D.foto[k];return p?`<figure class="ph" style="height:${h}mm"><img src="${p.src}" style="object-position:${p.pos||'50% 50%'}" alt=""></figure>`:null};
+const slot0=(k,h)=>`<div class="slot" style="height:${h}mm">${I.foto}<b>Foto: ${esc(D.fotoSlot[k]||k)}</b><span>Foto libera ancora da trovare</span></div>`;
+const slot=(k,h)=>ph(k,h)||slot0(k,h);
 const prog=cur=>`<div class="prog">${Z.map(z=>`<div class="${z.n<cur?'d':z.n===cur?'c':''}"><b>${z.n<cur?'✓ ':''}${z.n}</b>${esc(z.corto)}</div>`).join('')}</div>`;
 const head=(z,cont)=>`<div class="kick">CAMMINO SONORO DI LINZ · TAPPA 6 · DENTRO IL DUOMO</div>
 <div class="top"><div class="mini">${DIS.nav(z.n)}<div class="cap">Siete qui: ${z.n}${z.n<7?' · poi '+(z.n+1):''}</div></div><div><div class="big">${String(z.n).padStart(2,'0')}</div><h2>${esc(z.nome)}${cont?' <span style="font-size:11pt;color:var(--grey)">(continua)</span>':''}</h2>
@@ -131,7 +135,7 @@ h+=`<section class="pg"><div class="kick">FUORI, SUL SAGRATO</div><h2 style="fon
 /* zone */
 Z.forEach(z=>{
   if(z.split){
-    h+=`<section class="pg">${head(z)}${z.foto?slot(z.foto,28):''}<div class="sec">${I.ascolta}Il racconto</div>${P(z.testo.slice(0,z.split))}<p class="vn">Continua alla pagina seguente →</p></div><div class="grow"></div>${prog(z.n)}${foot()}</section>`;
+    h+=`<section class="pg">${head(z)}${z.foto?slot(z.foto,54):''}<div class="sec">${I.ascolta}Il racconto</div>${P(z.testo.slice(0,z.split))}<p class="vn">Continua alla pagina seguente →</p></div><div class="grow"></div>${prog(z.n)}${foot()}</section>`;
     h+=`<section class="pg">${head(z,true)}<div class="sec">${I.ascolta}Il racconto</div>${P(z.testo.slice(z.split))}${tail(z)}<div class="grow"></div>${prog(z.n)}${foot()}</section>`;
   } else {
     h+=`<section class="pg">${head(z)}${z.foto&&z.foto!=='presepe'?slot(z.foto,28):''}<div class="sec">${I.ascolta}Il racconto</div>${P(z.testo)}${tail(z)}<div class="grow"></div>${prog(z.n)}${foot()}</section>`;
@@ -147,7 +151,7 @@ h+=`<section class="pg"><div class="kick">FINE DELLA VISITA</div><h2 style="font
 <div class="grow"></div>${foot()}</section>`;
 
 /* linea del tempo */
-h+=`<section class="pg"><div class="kick">LA STORIA IN BREVE</div><h2 style="font-size:20pt;margin:2mm 0 4mm">Settant'anni per un Duomo</h2>
+h+=`<section class="pg"><div class="kick">LA STORIA IN BREVE</div><h2 style="font-size:20pt;margin:2mm 0 3mm">Settant'anni per un Duomo</h2>${D.foto&&D.foto.ieri?`<div style="display:flex;gap:5mm;align-items:flex-end;margin:0 0 3mm"><img src="${D.foto.ieri.src}" style="height:40mm;width:auto;border-radius:2mm;filter:grayscale(1)" alt=""><p style="font-size:9pt;color:var(--grey);margin:0;flex:1">${esc(D.foto.ieri.cap)}<br><span style="font-size:8pt">Foto: ${esc(D.foto.ieri.autore)}, ${esc(D.foto.ieri.licenza)}.</span></p></div>`:''}
 <div style="border-left:1.2mm solid var(--acc);padding-left:5mm">${D.cronologia.map(c=>`<div style="display:grid;grid-template-columns:15mm 1fr;gap:3mm;padding:1.7mm 0;border-bottom:.5pt solid var(--light)"><b class="serif" style="color:var(--acc);font-size:13pt">${c[0]}</b><span>${esc(c[1])}</span></div>`).join('')}</div>
 <div class="grow"></div>${foot()}</section>`;
 
@@ -155,7 +159,7 @@ h+=`<section class="pg"><div class="kick">LA STORIA IN BREVE</div><h2 style="fon
 h+=`<section class="pg"><div class="kick">FONTI E CREDITI</div><h2 style="font-size:20pt;margin:2mm 0 3mm">Da dove vengono le notizie</h2>
 <p style="font-size:10pt">Tutti i fatti vengono dalle pagine ufficiali della Diocesi di Linz, salvo dove indicato. I punti segnati <span class="v">da verificare</span> vanno controllati con il Domcenter (domcenter@dioezese-linz.at, +43 732 946100).</p>
 <ul class="src">${D.fonti.map(x=>`<li>${esc(x[0])}<br>${esc(x[1])}</li>`).join('')}</ul>
-<div class="sec">${I.foto}Crediti delle foto</div><p style="font-size:9.5pt;color:var(--grey)">Da completare con autore e licenza di ogni foto (Wikimedia Commons).</p>
+<div class="sec">${I.foto}Crediti delle foto</div><ul class="src">${Object.values(D.foto||{}).filter((p,i,a)=>a.findIndex(q=>q.link===p.link)===i).map(p=>`<li>${esc(p.cap.split('.')[0].split(':')[0])}: ${esc(p.autore)}, ${esc(p.licenza)}${p.licUrl?' ('+esc(p.licUrl)+'), ritagliata':''}. ${esc(p.link)}</li>`).join('')}</ul>
 <div class="grow"></div>${foot()}</section>`;
 
 /* soluzioni del gioco */

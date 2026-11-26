@@ -151,3 +151,12 @@ window.DOM.gioco=[
  {d:'Quale musica risuonò qui il giorno della consacrazione, nel 1869?',o:['La Messa in mi minore di Bruckner','Il Flauto magico di Mozart','L\'inno imperiale di Haydn'],r:0,p:'Anton Bruckner la diresse lui stesso, il 29 settembre 1869.'},
  {d:'Di che legno sono le circa ottanta figure del presepe?',o:['Quercia','Tiglio','Abete'],r:1,p:'Legno di tiglio, dipinto e dorato, scolpito da Sebastian Osterrieder tra il 1908 e il 1913.'}
 ];
+/* Foto vere (Wikimedia Commons). pos = punto da tenere al centro quando la foto viene ritagliata */
+window.DOM.foto={
+ esterno:{src:'foto/esterno.jpg',pos:'60% 45%',cap:'Il Mariendom visto dal Domplatz. La torre è in restauro.',autore:'Leonhard Lenz',licenza:'CC0',link:'https://commons.wikimedia.org/wiki/File:Mariendom_Linz_2023-09-29_01.jpg',anno:'2023'},
+ navata:{src:'foto/navata.jpg',pos:'50% 62%',cap:'La navata centrale verso il coro.',autore:'Uoaei1',licenza:'CC BY-SA 4.0',licUrl:'https://creativecommons.org/licenses/by-sa/4.0/',link:'https://commons.wikimedia.org/wiki/File:Linz_Neuer_Dom_Innenraum_01.jpg',anno:'2018'},
+ altare:{src:'foto/altare.jpg',pos:'50% 48%',cap:'L\'altare maggiore con il baldacchino e la croce.',autore:'Zairon',licenza:'CC BY-SA 3.0',licUrl:'https://creativecommons.org/licenses/by-sa/3.0/',link:'https://commons.wikimedia.org/wiki/File:Linz_Neuer_Dom_Innen_Altar_1.JPG',anno:'2012'},
+ ieri:{src:'foto/ieri-1898.jpg',cap:'Il Duomo verso il 1898, visto dal lato del coro: la torre è ancora un cantiere, chiusa dalle impalcature.',autore:'Adolf Nunwarz (1868–1931)',licenza:'Pubblico dominio',link:'https://commons.wikimedia.org/wiki/File:Adolf_Nunwarz_-_Der_neue_Marien-Dom.jpg',anno:'1898 circa'},
+ oggi:{src:'foto/oggi.jpg',cap:'Oggi, dal Domplatz: la torre è finita (nella foto è in restauro).',autore:'Leonhard Lenz',licenza:'CC0',link:'https://commons.wikimedia.org/wiki/File:Mariendom_Linz_2023-09-29_01.jpg',anno:'2023'}
+};
+window.DOM.ieriOggi.nota='Le due foto sono prese da punti diversi: nel 1898 dal lato del coro, oggi dal Domplatz.';
