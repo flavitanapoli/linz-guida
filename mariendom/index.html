@@ -171,6 +171,9 @@ body{padding-bottom:100px}
 .pov li button.cur{border-color:var(--red);background:var(--panel);font-weight:800}
 .pov li .k{flex:none;min-width:34px;height:34px;padding:0 6px;border-radius:17px;background:var(--red);color:var(--bg);display:grid;place-items:center;font-weight:800;font-size:.85rem}
 .prog span{cursor:pointer}
+
+/* Perché Cammino Sonoro: ora sta nella pagina iniziale */
+#cam{display:none!important}
 </style>
 
 <div class="bar g" role="status"><div class="wrap">
@@ -219,8 +222,8 @@ body{padding-bottom:100px}
 <div class="pov" id="pov" hidden role="dialog" aria-modal="true" aria-label="Pianta e indice"><div class="ph"><h2>Dove volete andare?</h2><button class="x" id="px" aria-label="Chiudi">✕</button></div><div id="pslot"></div><ol id="pidx"></ol></div>
 <nav class="nav" id="nav" aria-label="Schermate"><span class="nc" id="nc"></span><button id="nb">← Indietro</button><button id="np" aria-label="Pianta e indice">🗺<small>Pianta</small></button><button id="nf">Avanti →</button></nav>
 
-<script src="dati.js?v=33"></script>
-<script src="disegni.js?v=33"></script>
+<script src="dati.js?v=34"></script>
+<script src="disegni.js?v=34"></script>
 <script>
 {
 const D=window.DOM,$=id=>document.getElementById(id);
