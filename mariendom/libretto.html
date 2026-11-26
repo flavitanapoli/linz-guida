@@ -92,7 +92,7 @@ let h='';
 
 /* 1 copertina */
 h+=`<section class="pg cover"><div class="band"><div class="kick" style="color:#f3d9dd">CAMMINO SONORO DI LINZ · TAPPA 6 DI 6</div><h1>Mariendom</h1><div class="serif" style="font-size:14pt;margin-top:2mm">${esc(D.sottotitolo)}</div></div>
-${slot('esterno',92)}<div class="low"><p>Guida alla visita per il gruppo della parrocchia.<br>Fuori sul sagrato, poi sette zone dentro il Duomo.</p></div>${D.cammino?`<div style="border-left:1.2mm solid var(--acc);padding:1mm 0 1mm 3mm;margin:5mm 12mm 0"><div class="serif" style="font-size:12pt;font-weight:700">${esc(D.cammino.titolo)}</div><p style="margin:1mm 0 0">${esc(D.cammino.testo)}</p></div>`:''}${D.mappa?`<div style="display:flex;gap:4mm;align-items:center;margin:4mm 12mm 0"><img src="foto/qr-mappa.svg" style="width:22mm;height:22mm" alt=""><p style="margin:0;font-size:9.5pt"><b>La mappa del percorso</b><br>Inquadrate il codice con la fotocamera del telefono: si apre la mappa con le sei tappe e il ristorante.</p></div>`:''}
+${slot('esterno',92)}<div class="low"><p>Guida alla visita per il gruppo della parrocchia.<br>Fuori sul sagrato, poi sette zone dentro il Duomo.</p></div>${D.cammino?`<div style="border-left:1.2mm solid var(--acc);padding:1mm 0 1mm 3mm;margin:5mm 12mm 0"><div class="serif" style="font-size:12pt;font-weight:700">${esc(D.cammino.titolo)}</div><p style="margin:1mm 0 0">${esc(D.cammino.testo)}</p></div>`:''}
 <div class="grow"></div><div style="padding:0 12mm">${(()=>{page++;return '<div class="foot" style="border:0"><span></span><span></span></div>'})()}</div></section>`;
 
 /* 2 come si usa */
@@ -171,7 +171,7 @@ if(D.gioco)h+=`<section class="pg"><div class="kick">IL GIOCO DEL DUOMO</div><h2
 const count=(h.match(/class="pg/g)||[]).length;
 let extra=(4-((count+1)%4))%4;
 for(let i=0;i<extra;i++)h+=`<section class="pg"><div class="kick">APPUNTI</div><h2 style="font-size:20pt;margin:2mm 0 4mm">Le vostre note</h2>${'<div class="line"></div>'.repeat(18)}<div class="grow"></div>${foot()}</section>`;
-h+=`<section class="pg" style="justify-content:flex-end"><div style="border-top:1.4mm solid var(--acc);padding-top:4mm;margin-bottom:14mm"><h2 style="font-size:16pt;color:var(--acc)">Cammino Sonoro di Linz</h2><p style="font-size:9.5pt;color:var(--grey)">Stampare in A5 su carta avorio opaca, oppure due pagine per foglio A4.</p></div></section>`;
+h+=`<section class="pg">${D.mappa?`<div class="kick">IL PERCORSO</div><h2 style="font-size:18pt;margin:1mm 0 3mm">La mappa delle sei tappe</h2><img src="${D.mappa.img}" style="display:block;height:135mm;margin:0 auto;border-radius:2mm" alt=""><p style="font-size:9pt;color:var(--grey);margin:2mm 0 0">${esc(D.mappa.nota)} Il simbolo 🍴 indica il ristorante del pranzo.</p>`:''}<div class="grow"></div><div style="border-top:1.4mm solid var(--acc);padding-top:4mm;margin-bottom:14mm"><h2 style="font-size:16pt;color:var(--acc)">Cammino Sonoro di Linz</h2><p style="font-size:9.5pt;color:var(--grey)">Stampare in A5 su carta avorio opaca, oppure due pagine per foglio A4.</p></div></section>`;
 document.getElementById('out').innerHTML=h;
 }
 </script></body></html>

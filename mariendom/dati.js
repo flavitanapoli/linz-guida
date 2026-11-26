@@ -193,5 +193,8 @@ window.DOM.foto.presepe={src:'foto/presepe.jpg',pos:'50% 60%',cap:'Il presepe di
 /* perché il nome della guida */
 window.DOM.cammino={titolo:'Perché «Cammino Sonoro»',testo:'Linz è una città che si racconta con la musica. Bruckner fu per tredici anni organista del Duomo Vecchio. Mozart qui scrisse in quattro o cinque giorni la Sinfonia «Linz». Keplero qui pubblicò «L\'armonia del mondo». E dal 1979 la Klangwolke, la «nuvola sonora», porta la musica sul Danubio. Per questo la visitiamo così: camminando e ascoltando. Sei tappe, e a ogni tappa una voce che racconta.'};
 
-/* mappa del percorso (Google My Maps, sola lettura) */
-window.DOM.mappa={url:'https://www.google.com/maps/d/viewer?mid=12_Pj7vyBmFPnf3WmlMY6Mt7HnFZWDZ4',testo:'La mappa del percorso: le sei tappe e il ristorante.'};
+/* mappa del percorso: disegnata da dati OpenStreetMap */
+window.DOM.mappa={img:'foto/mappa.svg',proj:{lon0:14.2832,lon1:14.2911,lat0:48.2999,lat1:48.3084},nota:'Circa 2 km a piedi in tutto, nel centro di Linz.',tappe:[
+ {n:'1',nome:'Hauptplatz',lat:48.305847,lon:14.286442},{n:'2',nome:'Landhaus',lat:48.304156,lon:14.286027},{n:'3',nome:'Altstadt e Hofgasse',lat:48.305902,lon:14.285511},
+ {n:'4',nome:'Mozarthaus',lat:48.304595,lon:14.285023},{n:'5',nome:'Alter Dom',lat:48.305090,lon:14.288082},{n:'6',nome:'Mariendom',lat:48.300556,lon:14.285556},
+ {n:'🍴',nome:'Pranzo: Vapiano, Schmidtorstraße 1',lat:48.304844,lon:14.287398}]};
