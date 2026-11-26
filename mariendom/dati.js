@@ -30,7 +30,7 @@ window.DOM = {
   avviso: 'In chiesa si parla sottovoce. Durante le Messe e le funzioni le visite non sono permesse: aspettiamo la fine o restiamo seduti in fondo.',
 
   zone: [
-    { n:1, nome:'Ingresso sotto la torre', breve:'L\'organo alle vostre spalle', x:50, y:88, min:3,
+    { n:1, nome:'Ingresso sotto la torre', breve:'L\'organo alle vostre spalle', x:50, y:88, min:3, foto:'organo',
       testo:[
         'Siamo entrati dall\'atrio sotto la torre. Prima di andare avanti, voltatevi e guardate in alto, sopra la porta: c\'è l\'organo grande, chiamato «Rudigierorgel» in onore del vescovo fondatore.',
         'Fu inaugurato nel 1968 dalla ditta danese Marcussen ed è considerato uno dei più grandi organi meccanici del mondo: ogni tasto muove le canne con leve e tiranti, senza elettricità a fare il lavoro.',
@@ -44,7 +44,7 @@ window.DOM = {
         'La vetrata più famosa è la «Finestra di Linz»: la città raccontata dai suoi personaggi. Sopra il profilo di Linz c\'è Maria; più sotto tre imperatori e l\'astronomo Keplero con il cannocchiale. In basso, sulla stessa lastra, Beethoven e Bruckner.',
         'La pagò la Cassa di risparmio di Linz: 10.000 corone, più delle 8.000 sperate dal vescovo. Il grazie è nel vetro: il presidente della banca dà un libretto di risparmio a due contadini, e sotto le api lavorano attorno all\'alveare.'],
       cerca:['Volti di benefattori nelle vetrate','La «Finestra di Linz» con Beethoven e Bruckner, tra le grandi vetrate della navata','La Via Crucis del 1960, con figure a grandezza naturale'] },
-    { n:3, nome:'L\'incrocio e i due rosoni', breve:'La guerra e la pace, una di fronte all\'altra', x:50, y:47, min:3,
+    { n:3, nome:'L\'incrocio e i due rosoni', breve:'La guerra e la pace, una di fronte all\'altra', x:50, y:47, min:3, foto:'rosoni',
       testo:[
         'Siamo al centro della croce, dove la navata incontra il transetto. Guardate a destra e a sinistra: i due bracci si chiudono con due grandi rosoni, uno di fronte all\'altro.',
         'Uno è la «Finestra della pace»: mostra le virtù e le sette opere di misericordia. L\'altro è la «Finestra della guerra», con i simboli della guerra e i sette vizi capitali.',
@@ -66,7 +66,7 @@ window.DOM = {
         'Subito a destra della cappella votiva c\'è la «Madonna della Wurmstraße»: una statua tardogotica, l\'oggetto più antico del Duomo. Per secoli stette in una cappella e poi in una casa privata di Linz; nel 2001 la città e la regione la comprarono e la portarono qui.',
         'Nella cappella delle vergini, con sant\'Agnese, santa Caterina e santa Barbara, una lapide ricorda la Messa in mi minore di Bruckner.'],
       cerca:['La pianta del Duomo sul monumento a Rudigier','La stele di Franz Jägerstätter','La Madonna tardogotica','La lapide di Bruckner'] },
-    { n:6, nome:'La cappella votiva', breve:'Dove tutto cominciò, con la musica di Bruckner', x:50, y:5, min:3,
+    { n:6, nome:'La cappella votiva', breve:'Dove tutto cominciò, con la musica di Bruckner', x:50, y:5, min:3, foto:'votiva',
       testo:[
         'Questa è la parte più antica del Duomo, e la più grande delle cappelle. Fu terminata per prima, quando il resto della chiesa era ancora un cantiere.',
         'Il 29 settembre 1869 fu consacrata insieme alla corona di cappelle. Per l\'occasione si eseguì per la prima volta la Messa in mi minore di Anton Bruckner, diretta da lui stesso.',
@@ -201,3 +201,8 @@ window.DOM.mappa={img:'foto/mappa.svg',proj:{lon0:14.2832,lon1:14.2911,lat0:48.2
 
 /* peso della tappa scaricata (audio e foto), per il bottone "Scarica la guida" */
 window.DOM.offlineMB=11;
+
+/* foto aggiunte il 26/11: organo, rosoni, cappella votiva (Wikimedia Commons, ritagliate) */
+window.DOM.foto.organo={src:'foto/organo.jpg',cap:'L\'organo grande sopra l\'ingresso, visto dalla navata.',autore:'Uoaei1',licenza:'CC BY-SA 4.0',licUrl:'https://creativecommons.org/licenses/by-sa/4.0/',link:'https://commons.wikimedia.org/wiki/File:Linz_Neuer_Dom_Rudigier-Orgel_01.jpg'};
+window.DOM.foto.rosoni={src:'foto/rosoni.jpg',cap:'I due rosoni del transetto, uno di fronte all\'altro.',autore:'Zairon (due foto)',licenza:'CC BY-SA 3.0',licUrl:'https://creativecommons.org/licenses/by-sa/3.0/',link:'https://commons.wikimedia.org/wiki/File:Linz_Neuer_Dom_Innen_Rosette_1.JPG'};
+window.DOM.foto.votiva={src:'foto/votiva.jpg',cap:'La cappella votiva: l\'altare bianco con il tabernacolo e i mosaici dorati sotto le finestre.',autore:'DerHHO',licenza:'CC BY-SA 3.0',licUrl:'https://creativecommons.org/licenses/by-sa/3.0/',link:'https://commons.wikimedia.org/wiki/File:Linzer_Dom_Innen_06.jpg'};

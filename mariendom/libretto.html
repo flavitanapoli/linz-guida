@@ -155,9 +155,9 @@ h+=`<section class="pg"><div class="kick">LA STORIA IN BREVE</div><h2 style="fon
 
 /* fonti */
 h+=`<section class="pg"><div class="kick">FONTI E CREDITI</div><h2 style="font-size:20pt;margin:2mm 0 3mm">Da dove vengono le notizie</h2>
-<p style="font-size:10pt">Tutti i fatti vengono dalle pagine ufficiali della Diocesi di Linz, salvo dove indicato. I punti segnati <span class="v">da verificare</span> vanno controllati con il Domcenter (domcenter@dioezese-linz.at, +43 732 946100).</p>
-<ul class="src" style="font-size:7pt;line-height:1.25">${D.fonti.map(x=>`<li style="margin:0 0 .4mm">${esc(x[0])}<br>${esc(x[1].replace(/^https?:\/\/(www\.)?/,''))}</li>`).join('')}</ul>
-<div class="sec">${I.foto}Crediti delle foto</div><ul class="src" style="font-size:7.5pt;line-height:1.3">${Object.values(D.foto||{}).filter(p=>p.solo!=='web').filter((p,i,a)=>a.findIndex(q=>q.link===p.link)===i).map(p=>`<li>${esc(p.cap.split('.')[0].split(':')[0])}: ${esc(p.autore)}, ${esc(p.licenza)}${p.licUrl?' ('+esc(p.licUrl)+'), ritagliata':''}. ${esc(p.link)}</li>`).join('')}</ul>
+<p style="font-size:10pt">Tutti i fatti vengono dalle pagine ufficiali della Diocesi di Linz, salvo dove indicato.</p>
+<ul class="src" style="font-size:6.6pt;line-height:1.2">${D.fonti.map(x=>`<li style="margin:0 0 .4mm">${esc(x[0])}<br>${esc(x[1].replace(/^https?:\/\/(www\.)?/,''))}</li>`).join('')}</ul>
+<div class="sec">${I.foto}Crediti delle foto</div><ul class="src" style="font-size:6.8pt;line-height:1.2">${Object.values(D.foto||{}).filter(p=>p.solo!=='web').filter((p,i,a)=>a.findIndex(q=>q.link===p.link)===i).map(p=>`<li>${esc(p.cap.split('.')[0].split(':')[0])}: ${esc(p.autore)}, ${esc(p.licenza)}${p.licUrl?', ritagliata':''}. ${esc(p.link)}</li>`).join('')}</ul>
 <div class="grow"></div>${foot()}</section>`;
 
 /* soluzioni del gioco */

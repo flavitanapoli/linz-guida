@@ -152,6 +152,25 @@ body{padding-bottom:100px}
 .off p{margin:6px 0 0;font-size:.92rem}
 .off .ok{font-weight:800;margin:0}
 .off .barra{height:12px;border-radius:6px;background:var(--line);overflow:hidden;margin-top:8px}.off .barra i{display:block;height:100%;width:0;background:var(--red);transition:width .2s}
+
+/* LIBRO e PIANTA */
+.ics{flex:none;display:flex;flex-direction:column;gap:8px}
+.lib{width:54px;height:54px;border-radius:50%;border:2px solid var(--red);background:transparent;color:var(--red);display:grid;place-items:center;padding:0}
+.lib svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.lib.on{background:var(--red);color:var(--bg)}
+.leggi.nos{margin:0}.leggi.nos>summary{display:none}
+.nav #np{flex:0 0 auto;background:transparent;border:2px solid var(--line);color:var(--ink);line-height:1.1}.nav #np small{display:block;font-size:.7rem;font-weight:600}
+.pov{position:fixed;inset:0;z-index:40;background:var(--bg);overflow:auto;padding:16px 16px 40px}
+.pov[hidden]{display:none}
+.pov .ph{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.pov .ph h2{margin:0;font-size:1.3rem}
+.pov .x{min-width:54px;min-height:54px;border-radius:50%;border:2px solid var(--line);background:transparent;color:var(--ink);font-size:1.4rem;font-weight:800}
+.pov .planbox{max-width:520px;margin:0 auto}
+.pov ol{list-style:none;padding:0;margin:14px auto 0;max-width:520px}
+.pov li button{display:flex;align-items:center;gap:12px;width:100%;min-height:54px;margin:6px 0;padding:6px 12px;border-radius:12px;border:2px solid var(--line);background:transparent;color:var(--ink);font:inherit;text-align:left}
+.pov li button.cur{border-color:var(--red);background:var(--panel);font-weight:800}
+.pov li .k{flex:none;min-width:34px;height:34px;padding:0 6px;border-radius:17px;background:var(--red);color:var(--bg);display:grid;place-items:center;font-weight:800;font-size:.85rem}
+.prog span{cursor:pointer}
 </style>
 
 <div class="bar g" role="status"><div class="wrap">
@@ -189,18 +208,19 @@ body{padding-bottom:100px}
   <div class="walk" id="fine"></div>
   <a class="btn" href="libretto.pdf">Libretto da stampare (PDF)</a>
   <details><summary style="min-height:44px;display:flex;align-items:center;font-weight:700;cursor:pointer">Fonti e crediti</summary>
-    <p class="src">Ogni fatto viene dalle pagine ufficiali della Diocesi di Linz, salvo dove indicato. I punti segnati <span class="tag">da verificare</span> vanno controllati sul posto o con il Domcenter (domcenter@dioezese-linz.at, +43 732 946100).</p>
-    <p class="src">Le foto vengono da Wikimedia Commons; la pianta è un disegno schematico. La voce è di Francesca; dove la registrazione non c'è ancora, legge la voce del telefono.</p>
+    <p class="src">Ogni fatto viene dalle pagine ufficiali della Diocesi di Linz, salvo dove indicato.</p>
+    <p class="src">Le foto vengono da Wikimedia Commons; la pianta è un disegno schematico. La voce è di Francesca.</p>
     <ul class="src" id="fonti"></ul>
     <h3 style="font-size:1rem;margin-top:16px">Crediti delle foto</h3><ul class="src" id="crediti"></ul>
   </details>
 </div></section>
 <footer class="g"><div class="wrap src">Cammino Sonoro di Linz · guida per il gruppo della parrocchia</div></footer>
 </main>
-<nav class="nav" id="nav" aria-label="Schermate"><span class="nc" id="nc"></span><button id="nb">← Indietro</button><button id="nf">Avanti →</button></nav>
+<div class="pov" id="pov" hidden role="dialog" aria-modal="true" aria-label="Pianta e indice"><div class="ph"><h2>Dove volete andare?</h2><button class="x" id="px" aria-label="Chiudi">✕</button></div><div id="pslot"></div><ol id="pidx"></ol></div>
+<nav class="nav" id="nav" aria-label="Schermate"><span class="nc" id="nc"></span><button id="nb">← Indietro</button><button id="np" aria-label="Pianta e indice">🗺<small>Pianta</small></button><button id="nf">Avanti →</button></nav>
 
-<script src="dati.js?v=30"></script>
-<script src="disegni.js?v=30"></script>
+<script src="dati.js?v=31"></script>
+<script src="disegni.js?v=31"></script>
 <script>
 {
 const D=window.DOM,$=id=>document.getElementById(id);
@@ -399,6 +419,22 @@ $('nb').onclick=()=>go(at-1);$('nf').onclick=()=>go(at+1<S.length?at+1:0);
 $('plan').addEventListener('click',e=>{const m=e.target.closest('.mk');if(!m)return;e.stopPropagation();e.preventDefault();go(S.findIndex(s=>s.zona===+m.dataset.n))},true);
 /* l'avviso di arrivo porta al primo capitolo */
 $('arrGo').onclick=()=>{$('arrDlg').hidden=true;go(1);const b=document.querySelector('#f1 .play');b&&b.click()};
+
+/* LIBRO: sotto l'altoparlante, apre e chiude il testo */
+{const BOOK='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5c3-1 6-1 9 1 3-2 6-2 9-1v13c-3-1-6-1-9 1-3-2-6-2-9-1z"/><path d="M12 6.5v13"/></svg>';
+document.querySelectorAll('.tt').forEach(r=>{if(r.closest('.mus'))return;const host=r.closest('.ch,.zone,.cam');if(!host)return;const d=host.querySelector('details.leggi');const sp=r.querySelector('.play.ic');if(!d||!sp)return;
+ d.classList.add('nos');const col=document.createElement('div');col.className='ics';sp.replaceWith(col);col.appendChild(sp);
+ const b=document.createElement('button');b.className='lib';b.innerHTML=BOOK;b.setAttribute('aria-label','Leggi il testo');b.setAttribute('aria-expanded','false');
+ b.onclick=()=>{d.open=!d.open;b.classList.toggle('on',d.open);b.setAttribute('aria-expanded',d.open)};col.appendChild(b)});}
+/* PIANTA e indice da ogni schermata */
+{const pov=$('pov'),pb=document.querySelector('.planbox'),home=pb.parentNode,mark=document.createComment('pianta');home.insertBefore(mark,pb);
+ const shut=()=>{pov.hidden=true;mark.after(pb);document.body.style.overflow=''};
+ const show=()=>{$('pslot').appendChild(pb);$('pidx').innerHTML=S.map((s,k)=>`<li><button data-k="${k}" class="${k===at?'cur':''}"><span class="k">${s.zona?s.zona:(k===0?'⌂':(k<=D.fuori.length?'F'+k:(k===S.length-1?'✓':'⇢')))}</span><span>${esc(s.nome)}</span></button></li>`).join('');pov.hidden=false;document.body.style.overflow='hidden';pov.scrollTop=0};
+ $('np').onclick=show;$('px').onclick=shut;
+ $('pidx').addEventListener('click',e=>{const b=e.target.closest('button[data-k]');if(b){shut();go(+b.dataset.k)}});
+ pov.addEventListener('click',e=>{if(e.target.closest('.mk'))setTimeout(shut,0)},true);
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!pov.hidden)shut()});
+ document.addEventListener('click',e=>{const sp=e.target.closest('.prog span[data-p]');if(sp)go(S.findIndex(s=>s.zona===+sp.dataset.p))});}
 let st=0;try{st=+sessionStorage.getItem('stepD')||0}catch(e){}
 go(st,true);
 }
