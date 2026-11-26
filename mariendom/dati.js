@@ -189,3 +189,6 @@ window.DOM.musica={6:{src:'audio/bruckner-kyrie-1938.mp3',titolo:'Ascoltate Bruc
 window.DOM.fotoLink={_presepe:{url:'https://www.dioezese-linz.at/mariendom/erleben/osterriederkrippe',testo:'Guardate le foto del presepe sul sito della diocesi'}};
 
 window.DOM.foto.presepe={src:'foto/presepe.jpg',pos:'50% 60%',cap:'Il presepe di Osterrieder: la Natività, con gli angeli dorati.',autore:'per gentile concessione di un\'amica del gruppo',licenza:'uso riservato al gruppo',link:''};
+
+/* perché il nome della guida */
+window.DOM.cammino={titolo:'Perché «Cammino Sonoro»',testo:'Linz è una città che si racconta con la musica. Bruckner fu per tredici anni organista del Duomo Vecchio. Mozart qui scrisse in quattro o cinque giorni la Sinfonia «Linz». Keplero qui pubblicò «L\'armonia del mondo». E dal 1979 la Klangwolke, la «nuvola sonora», porta la musica sul Danubio. Per questo la visitiamo così: camminando e ascoltando. Sei tappe, e a ogni tappa una voce che racconta.'};
