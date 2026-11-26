@@ -84,7 +84,7 @@ window.DOM = {
       nota:'Cripta: verificare con il Domcenter se è aperta ai gruppi a fine marzo [v].' }
   ],
 
-  finale: 'Il nostro giro del Duomo finisce qui. Ritrovatevi all\'ingresso sotto la torre: da lì andiamo insieme a pranzo.',
+  finale: 'Il nostro giro del Duomo finisce qui. Ritrovatevi all\'ingresso sotto la torre.',
 
   pranzo: {
     nome:'Pranzo da Vapiano',
@@ -177,4 +177,4 @@ window.DOM.foto={
 window.DOM.ieriOggi.nota='Le due foto sono prese da punti diversi: nel 1898 dal lato del coro, oggi dal Domplatz.';
 
 /* audio registrati (voce di Francesca). Le parti senza file usano la voce del telefono. */
-window.DOM.audio={f1:'audio/mariendom-01-guardate.mp3',f2:'audio/mariendom-02-storia.mp3',f3:'audio/mariendom-03-campane.mp3',z1:'audio/mariendom-z1-ingresso.mp3'};
+window.DOM.audio={f1:'audio/mariendom-01-guardate.mp3',f2:'audio/mariendom-02-storia.mp3',f3:'audio/mariendom-03-campane.mp3',z1:'audio/mariendom-z1-ingresso.mp3',z2:'audio/mariendom-z2-navata.mp3',z3:'audio/mariendom-z3-incrocio.mp3',z4:'audio/mariendom-z4-altare.mp3',z5:'audio/mariendom-z5-cappelle.mp3',z7:'audio/mariendom-z7-cripta.mp3',fine:'audio/mariendom-fine.mp3'};
