@@ -12,16 +12,18 @@ window.DOM = {
       testo:[
         'Fermatevi sul sagrato e alzate lo sguardo. La torre misura 134,6 metri: è la seconda d\'Austria, circa due metri più bassa del campanile di Santo Stefano a Vienna.',
         'Tutto quello che vedete è neogotico: costruito tra Ottocento e Novecento, ma nello stile delle grandi cattedrali medievali. Archi a punta, pinnacoli, guglie, rosoni. Il progetto è di Vincenz Statz, architetto di Colonia, la città della cattedrale gotica più famosa di Germania.',
-        'Questa è la chiesa più grande d\'Austria per capienza: può accogliere circa ventimila persone. È lunga 130 metri. Fra poco entreremo dalla porta sotto la torre.'] },
+        'Questa è la chiesa più grande d\'Austria per capienza: può accogliere circa ventimila persone. Non è un numero a caso: il vescovo Rudigier la volle grande abbastanza da contenere tutti gli abitanti della Linz di allora. È lunga 130 metri. Fra poco entreremo dalla porta sotto la torre.'] },
     { id:'f2', titolo:'La storia', min:4,
       testo:[
         'Nel 1854 papa Pio Nono proclamò il dogma dell\'Immacolata Concezione di Maria. L\'anno dopo il vescovo di Linz, Franz Joseph Rudigier, annunciò che la sua diocesi le avrebbe dedicato un grande duomo. Da qui il nome: Duomo dell\'Immacolata Concezione, in tedesco Maria-Empfängnis-Dom.',
         'La prima pietra fu posta il primo maggio 1862. Per quella festa Anton Bruckner, allora organista del Duomo vecchio, compose una cantata: «Preiset den Herrn», lodate il Signore.',
         'I lavori durarono sessantadue anni. Si cominciò sotto l\'imperatore Francesco Giuseppe, quando Linz faceva parte dell\'Impero asburgico, che dal 1867 divenne Impero austro-ungarico. Poi vennero la Prima guerra mondiale e, nel 1918, la fine dell\'Impero. Il Duomo fu consacrato il 29 aprile 1924: in una Repubblica austriaca piccola e povera, ma con la sua cattedrale finalmente compiuta.',
-        'Rudigier non la vide finita: morì nel 1884. Dopo Statz, i lavori passarono al figlio Franz e infine al capomastro del Duomo, Matthäus Schlager.'] },
+        'Rudigier non la vide finita: morì nel 1884. Dopo Statz, i lavori passarono al figlio Franz e infine al capomastro del Duomo, Matthäus Schlager.',
+        'Nel 1886 i costruttori fecero una mossa astuta: cominciarono la torre, staccata dalla chiesa ancora incompiuta. Così nessuno, per mancanza di soldi, avrebbe potuto rimpicciolire il progetto: prima o poi i due pezzi andavano uniti. E i soldi vennero solo dalle offerte dei fedeli.'] },
     { id:'f3', titolo:'Il dettaglio: le campane', min:2,
       testo:[
         'Nella torre ci sono sette campane, fuse nel 1901 da Anton Gugg. La più grande si chiama «Immaculata» e pesa 8.120 chili, più di un camion carico.',
+        'Quando suonano tutte e sette insieme, intonano l\'inizio del «Salve Regina». È l\'unico grande concerto di campane del 1900 rimasto completo in tutti i paesi di lingua tedesca.',
         'Se vi capita di sentirle suonare, ascoltate la nota più profonda: è lei.'] }
   ],
 
@@ -41,40 +43,44 @@ window.DOM = {
         'Un dettaglio curioso: in alcune vetrate compaiono i ritratti dei benefattori che pagarono le finestre, dipinti copiando le loro fotografie. Cercate volti dall\'aria «moderna», con baffi e colletti dell\'epoca, accanto ai santi.',
         'La vetrata più famosa è la «Finestra di Linz»: la città raccontata dai suoi personaggi. Sopra il profilo di Linz c\'è Maria; più sotto tre imperatori e l\'astronomo Keplero con il cannocchiale. In basso, sulla stessa lastra, Beethoven e Bruckner.',
         'La pagò la Cassa di risparmio di Linz: 10.000 corone, più delle 8.000 sperate dal vescovo. Il grazie è nel vetro: il presidente della banca dà un libretto di risparmio a due contadini, e sotto le api lavorano attorno all\'alveare.'],
-      cerca:['Volti di benefattori nelle vetrate','La «Finestra di Linz» con Beethoven e Bruckner [v: chiedere al Domcenter dove si trova]','Le 14 stazioni della Via Crucis, del 1960'] },
+      cerca:['Volti di benefattori nelle vetrate','La «Finestra di Linz» con Beethoven e Bruckner [v: chiedere al Domcenter dove si trova]','La Via Crucis del 1960, con figure a grandezza naturale'] },
     { n:3, nome:'L\'incrocio e i due rosoni', breve:'La guerra e la pace, una di fronte all\'altra', x:50, y:47, min:3,
       testo:[
         'Siamo al centro della croce, dove la navata incontra il transetto. Guardate a destra e a sinistra: i due bracci si chiudono con due grandi rosoni, uno di fronte all\'altro.',
         'Uno è la «Finestra della pace»: mostra le virtù e le sette opere di misericordia. L\'altro è la «Finestra della guerra», con i simboli della guerra e i sette vizi capitali.',
-        'Il rosone della pace ha una storia amara: i suoi simboli di pace andarono distrutti nella Seconda guerra mondiale. Al loro posto oggi ci sono figure di vescovi e canonici del Duomo.'],
-      cerca:['Il rosone della pace','Il rosone della guerra'] },
+        'Il rosone della pace ha una storia amara: i suoi simboli di pace andarono distrutti nella Seconda guerra mondiale. Al loro posto oggi ci sono figure di vescovi e canonici del Duomo.',
+        'Al centro dell\'incrocio c\'è l\'isola dell\'altare, rifatta nel 2017 in pietra calcarea bavarese. Fuori dalle funzioni la parte centrale si abbassa: si può salire e stare proprio «in mezzo al Duomo».'],
+      cerca:['Il rosone della pace','Il rosone della guerra','L\'isola dell\'altare del 2017'] },
     { n:4, nome:'Il coro e l\'altare a baldacchino', breve:'Quindici metri di pietra, marmo e mosaico', x:50, y:30, min:4, foto:'altare',
       testo:[
         'Davanti a voi c\'è l\'altare maggiore, coperto da un baldacchino alto 15 metri. Lo disegnò l\'architetto Statz e lo realizzò lo scultore Ludwig Linzinger nel 1901.',
         'In alto, la croce è alta 4 metri. In cima a tutto sta la Madonna Immacolata, a cui il Duomo è dedicato. Attorno, le statue di santi, tra cui Pietro, Maria Maddalena, il buon ladrone Disma e il soldato Longino.',
-        'Sul fronte della mensa, in marmo bianco, quattro mosaici mostrano Abele, Noè, Melchisedek e Abramo: quattro offerte a Dio dell\'Antico Testamento, che la tradizione legge come annuncio dell\'Eucaristia.',
+        'La mensa è di marmo bianco di Lasa, in Alto Adige. Sul fronte, quattro mosaici mostrano Abele, Noè, Melchisedek e Abramo: offerte a Dio dell\'Antico Testamento, lette come annuncio dell\'Eucaristia.',
         'Le undici vetrate del coro, del 1885, raccontano Maria nella vita di Gesù. Alcune sono in restauro: un lavoro che dovrebbe concludersi entro il 2030.'],
-      cerca:['L\'Immacolata in cima al baldacchino','I quattro mosaici sulla mensa','Le vetrate del coro con Maria'] },
+      cerca:['L\'Immacolata in cima: il Bambino con un\'asta a croce schiaccia la testa del serpente','I quattro mosaici sulla mensa','Le vetrate del coro con Maria'] },
     { n:5, nome:'La corona di cappelle', breve:'Un santo, un vescovo e un contadino martire', x:24, y:18, min:5,
       testo:[
         'Attorno al coro gira una corona di cappelle. Ognuna è dedicata a Maria con un titolo diverso: Regina degli apostoli, dei martiri, dei profeti, delle vergini e così via. Percorretele con calma; ecco cosa cercare.',
-        'Nella cappella di Maria Regina dei patriarchi, con san Giuseppe, c\'è la statua in bronzo del vescovo Rudigier disteso, del 1892. È un monumento, non la tomba: Rudigier è sepolto nella cripta.',
+        'Nella cappella di Maria Regina dei patriarchi, con san Giuseppe, c\'è il vescovo Rudigier disteso, in bronzo, del 1892: l\'imperatore Francesco Giuseppe ne lodò la somiglianza. È un monumento, non la tomba: Rudigier è sepolto nella cripta. Cercate la tavola con la pianta del Duomo: in colore, le poche parti finite quando morì.',
         'Nella cappella dei martiri c\'è una Pietà in pietra con san Floriano, patrono dell\'Alta Austria. Accanto, una stele ricorda Franz Jägerstätter, contadino dell\'Alta Austria che rifiutò di combattere per Hitler e fu giustiziato nel 1943. La Chiesa lo ha proclamato beato nel 2007.',
-        'Vicino alla cappella votiva cercate la «Madonna della Wurmstraße»: una statua tardogotica, l\'oggetto più antico di tutto il Duomo, più vecchia della chiesa di almeno trecento anni [v].',
+        'Subito a destra della cappella votiva c\'è la «Madonna della Wurmstraße»: una statua tardogotica, l\'oggetto più antico del Duomo. Per secoli stette in una cappella e poi in una casa privata di Linz; nel 2001 la città e la regione la comprarono e la portarono qui.',
         'Nella cappella delle vergini, con sant\'Agnese, santa Caterina e santa Barbara, una lapide ricorda la Messa in mi minore di Bruckner.'],
-      cerca:['Il vescovo Rudigier in bronzo','La stele di Franz Jägerstätter','La Madonna tardogotica','La lapide di Bruckner'] },
+      cerca:['La pianta del Duomo sul monumento a Rudigier','La stele di Franz Jägerstätter','La Madonna tardogotica','La lapide di Bruckner'] },
     { n:6, nome:'La cappella votiva', breve:'Dove tutto cominciò, con la musica di Bruckner', x:50, y:5, min:3,
       testo:[
         'Questa è la parte più antica del Duomo, e la più grande delle cappelle. Fu terminata per prima, quando il resto della chiesa era ancora un cantiere.',
         'Il 29 settembre 1869 fu consacrata insieme alla corona di cappelle. Per l\'occasione si eseguì per la prima volta la Messa in mi minore di Anton Bruckner, diretta da lui stesso.',
-        'Pensateci: per decenni i fedeli di Linz pregarono qui, in questo piccolo pezzo di cattedrale, mentre attorno a loro cresceva il resto.'],
-      cerca:['Le vetrate del 1868, le più antiche del Duomo'] },
+        'Pensateci: per decenni i fedeli di Linz pregarono qui, in questo piccolo pezzo di cattedrale, mentre attorno a loro cresceva il resto.',
+        'Guardatevi attorno. La porticina del tabernacolo è fatta con l\'argento dei gioielli che i fedeli donarono per il Duomo. La corona d\'oro della Madonna fu un regalo di papa Leone XIII. I 24 mosaici sotto le finestre vengono da Venezia, dalla bottega di Antonio Salviati.',
+        'Nella vetrata di destra c\'è il vescovo Rudigier in ginocchio con in mano il modellino del Duomo, e accanto a lui l\'architetto con il progetto.'],
+      cerca:['Le vetrate del 1868, le più antiche del Duomo','Rudigier con il modellino del Duomo, nella vetrata di destra','Il tabernacolo d\'argento','I mosaici veneziani sotto le finestre'] },
     { n:7, nome:'La cripta e il presepe', breve:'Le tombe dei vescovi e uno dei presepi più grandi del mondo', x:78, y:22, min:5, foto:'presepe', opz:true,
       testo:[
         'Accanto alle sacrestie una scala di marmo scende nella cripta, sotto la cappella votiva. Qui riposano i vescovi di Linz: al centro, davanti, la tomba di Rudigier.',
+        'Sulla parete dietro l\'altare c\'è la prima pietra del Duomo, posata nel 1862, con una lapide in latino.',
         'Nella cripta si trova anche il presepe di Sebastian Osterrieder, scultore di Monaco. Il vescovo Doppelbauer glielo commissionò nel 1908; fu completato per il Natale 1913 e dal 1921 sta qui in modo permanente.',
         'Conta circa ottanta figure in legno di tiglio, dipinte e dorate, ed è considerato uno dei presepi più grandi del mondo. Nel 2020–2021 è stato restaurato completamente.'],
-      cerca:['La tomba del vescovo Rudigier','Il presepe di Osterrieder'],
+      cerca:['La tomba del vescovo Rudigier','La prima pietra del 1862','Il presepe di Osterrieder'],
       nota:'Cripta: verificare con il Domcenter se è aperta ai gruppi a fine marzo [v].' }
   ],
 
@@ -87,8 +93,14 @@ window.DOM = {
   },
 
   fonti: [
+    ['Mariendom, la Via Crucis','https://www.dioezese-linz.at/mariendom/erleben/kreuzweg'],
+    ['Mariendom, il vescovo Rudigier','https://www.dioezese-linz.at/mariendom/erleben/bischof-franz-joseph-rudigier'],
+    ['Mariendom, il presbiterio (2017)','https://www.dioezese-linz.at/mariendom/erleben/altarraum'],
+    ['Mariendom, le campane','https://www.dioezese-linz.at/mariendom/erleben/glocken'],
+    ['Mariendom, la cappella votiva','https://www.dioezese-linz.at/mariendom/erleben/votivkapelle'],
+    ['Mariendom, storia della costruzione','https://www.dioezese-linz.at/mariendom/erleben/geschichte-des-mariendoms'],
+    ['Mariendom, le vetrate','https://www.dioezese-linz.at/mariendom/erleben/gemaeldefenster'],
     ['Diocesi di Linz, guida della chiesa (Kirchenführer)','https://www.dioezese-linz.at/dl/NmtNJKJlLolNJqx4KJK/kirchenfuehrer_als_datei.pdf'],
-    ['Mariendom, le vetrate dipinte','https://dioezese-linz.at/site/mariendom/bauwerk/rundgang/article/43008.html'],
     ['Mariendom, «Dalla bozza alla Finestra di Linz di oggi» (2022)','https://www.dioezese-linz.at/mariendom/blog/von-der-skizze-bis-zum-heutigen-linzer-fenster'],
     ['Mariendom, la corona di cappelle','https://www.dioezese-linz.at/mariendom/erleben/kapellenkranz'],
     ['Mariendom, l\'altare a baldacchino','https://www.dioezese-linz.at/mariendom/erleben/baldachinaltar'],
@@ -118,7 +130,7 @@ window.DOM.fotoSlot={
  presepe:'Il presepe di Osterrieder nella cripta'
 };
 window.DOM.zone[4].split=4; // nel libretto la zona 5 occupa due pagine
-window.DOM.zone[1].split=3; window.DOM.zone[3].split=3; // navata e altare: due pagine nel libretto
+window.DOM.zone[1].split=3; window.DOM.zone[3].split=3; window.DOM.zone[2].split=2; window.DOM.zone[5].split=3; window.DOM.zone[6].split=2; // navata e altare: due pagine nel libretto
 window.DOM.cronologia=[
  ['1854','Papa Pio IX proclama il dogma dell\'Immacolata Concezione'],
  ['1855','Il vescovo Rudigier annuncia il nuovo duomo'],
