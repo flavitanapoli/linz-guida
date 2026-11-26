@@ -156,8 +156,8 @@ footer{padding-block:10px 40px}
 <footer class="g"><div class="wrap src">Cammino Sonoro di Linz · guida per il gruppo della parrocchia</div></footer>
 </main>
 
-<script src="dati.js?v=18"></script>
-<script src="disegni.js?v=18"></script>
+<script src="dati.js?v=19"></script>
+<script src="disegni.js?v=19"></script>
 <script>
 {
 const D=window.DOM,$=id=>document.getElementById(id);
@@ -226,7 +226,7 @@ document.querySelectorAll('.quiz').forEach(box=>{qShow(box);box.addEventListener
 /* finale */
 $('fine').innerHTML=`<h3 style="font-size:1.2rem">${esc(D.finale)}</h3>${D.audio&&D.audio.fine?'<button class="play" id="pfine">▶ Ascolta</button>':''}<p id="qscore" class="g"></p><p style="margin-top:14px"><b>${esc(D.pranzo.nome)}</b></p><p>${fmt(D.pranzo.indirizzo)}</p><p>${fmt(D.pranzo.strada)}</p>`;
 if($('pfine'))$('pfine').onclick=e=>play(e.currentTarget,$('fine'),[D.finale],D.audio.fine);
-$('crediti').innerHTML=Object.values(D.foto||{}).filter((p,i,a)=>a.findIndex(q=>q.link===p.link)===i).map(p=>`<li><a href="${esc(p.link)}">${esc(p.cap.split('.')[0])}</a>: ${esc(p.autore)}, ${p.licUrl?`<a href="${esc(p.licUrl)}">${esc(p.licenza)}</a>`:esc(p.licenza)}${p.licUrl?', ritagliata':''}.</li>`).join('');qScore();$('fonti').innerHTML=D.fonti.map(f=>`<li><a href="${esc(f[1])}">${esc(f[0])}</a></li>`).join('');
+$('crediti').innerHTML=Object.values(D.foto||{}).filter((p,i,a)=>a.findIndex(q=>q.link===p.link)===i).map(p=>`<li>${p.link?`<a href="${esc(p.link)}">${esc(p.cap.split('.')[0])}</a>`:esc(p.cap.split('.')[0])}: ${esc(p.autore)}, ${p.licUrl?`<a href="${esc(p.licUrl)}">${esc(p.licenza)}</a>`:esc(p.licenza)}${p.licUrl?', ritagliata':''}.</li>`).join('');qScore();$('fonti').innerHTML=D.fonti.map(f=>`<li><a href="${esc(f[1])}">${esc(f[0])}</a></li>`).join('');
 /* GPS: arrivo alla tappa. La posizione resta sul telefono: non viene salvata né inviata. */
 {
 const G=D.gps,box=$('gps');let watch=null,inside=0,arrived=false;

@@ -186,4 +186,6 @@ window.DOM.audio={f1:'audio/mariendom-01-guardate.mp3',f2:'audio/mariendom-02-st
 window.DOM.musica={6:{src:'audio/bruckner-kyrie-1938.mp3',titolo:'Ascoltate Bruckner',testo:'L\'inizio del Kyrie della Messa in mi minore, la Messa scritta per questa cappella. Poco più di un minuto e mezzo.',cred:'Filarmonica di Amburgo, direttore Max Thurn, disco Telefunken del 1938. Pubblico dominio, da Wikimedia Commons.',link:'https://commons.wikimedia.org/wiki/File:PDP-CH_-_Philharmoniker_Hamburg,_Max_Thurn_-_Mass_No._2_in_E_minor,_WAB_27_-_1st_Movement,_Kyrie,_Part_1_-_Bruckner_-_Telefunken-e2607-023233.flac'}};
 
 /* foto non libere: sul sito solo un collegamento alla pagina ufficiale */
-window.DOM.fotoLink={presepe:{url:'https://www.dioezese-linz.at/mariendom/erleben/osterriederkrippe',testo:'Guardate le foto del presepe sul sito della diocesi'}};
+window.DOM.fotoLink={_presepe:{url:'https://www.dioezese-linz.at/mariendom/erleben/osterriederkrippe',testo:'Guardate le foto del presepe sul sito della diocesi'}};
+
+window.DOM.foto.presepe={src:'foto/presepe.jpg',pos:'50% 60%',cap:'Il presepe di Osterrieder: la Natività, con gli angeli dorati.',autore:'per gentile concessione di un\'amica del gruppo',licenza:'uso riservato al gruppo',link:''};
