@@ -134,6 +134,15 @@ body{padding-bottom:100px}
 .stepk{margin-top:14px}
 .step .quiz,#qscore{display:none!important}
 .step .look input{display:none}.step .look label{min-height:0;padding:3px 0}.step .look label::before{content:'•';color:var(--red);font-weight:800}.step .look b::before{content:'👀 '}
+
+/* ICONE ASCOLTA: bottone tondo con altoparlante, sempre a sinistra del titolo */
+.tt{display:flex;align-items:center;gap:12px;margin:6px 0 10px}
+.tt h3,.tt b{margin:0;flex:1;line-height:1.2}
+.tt small{display:block;color:var(--soft);font-weight:400;font-size:.85rem;margin-top:2px}
+.play.ic{flex:none;width:54px;height:54px;min-width:54px;min-height:54px;padding:0;border-radius:50%;justify-content:center}
+.play.ic svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.zone .zh{display:none}
+.cam .tt b{font-size:1.05rem}
 </style>
 
 <div class="bar g" role="status"><div class="wrap">
@@ -180,8 +189,8 @@ body{padding-bottom:100px}
 </main>
 <nav class="nav" id="nav" aria-label="Schermate"><span class="nc" id="nc"></span><button id="nb">← Indietro</button><button id="nf">Avanti →</button></nav>
 
-<script src="dati.js?v=28"></script>
-<script src="disegni.js?v=28"></script>
+<script src="dati.js?v=29"></script>
+<script src="disegni.js?v=29"></script>
 <script>
 {
 const D=window.DOM,$=id=>document.getElementById(id);
@@ -213,12 +222,12 @@ const synth=window.speechSynthesis;let cur=null;
 let snd=null;
 const stop=()=>{try{synth&&synth.cancel()}catch(e){}if(snd){snd.pause();snd=null}if(cur){cur.btn.classList.remove('on');cur.btn.innerHTML=cur.lab;cur.box.querySelectorAll('p.on').forEach(p=>p.classList.remove('on'))}cur=null};
 const play=(btn,box,paras,src)=>{if(cur&&cur.btn===btn){stop();return}stop();
- if(src){cur={btn,box,lab:btn.innerHTML};btn.classList.add('on');btn.innerHTML='❚❚ Pausa';const me=cur;
+ if(src){cur={btn,box,lab:btn.innerHTML};btn.classList.add('on');btn.innerHTML=btn.dataset.p||'❚❚ Pausa';const me=cur;
   const ps=[...box.querySelectorAll('.txt p')],len=paras.map(p=>plain(p).length),tot=len.reduce((a,b)=>a+b,0);
   snd=new Audio(src);snd.ontimeupdate=()=>{if(cur!==me||!snd.duration)return;const f=snd.currentTime/snd.duration*tot;let s=0,k=0;while(k<len.length-1&&s+len[k]<f){s+=len[k];k++}ps.forEach((p,j)=>p.classList.toggle('on',j===k))};
-  snd.onended=()=>{if(cur===me)stop()};snd.onerror=()=>{if(cur===me){stop();btn.textContent='Audio non disponibile'}};snd.play().catch(()=>{if(cur===me)stop()});return}
+  snd.onended=()=>{if(cur===me)stop()};snd.onerror=()=>{if(cur===me){stop();(btn.dataset.p?btn.title='Audio non disponibile':btn.textContent='Audio non disponibile')}};snd.play().catch(()=>{if(cur===me)stop()});return}
  if(!synth){btn.textContent='Voce non disponibile';return}
- cur={btn,box,lab:btn.innerHTML};btn.classList.add('on');btn.innerHTML='❚❚ Pausa';
+ cur={btn,box,lab:btn.innerHTML};btn.classList.add('on');btn.innerHTML=btn.dataset.p||'❚❚ Pausa';
  const ps=box.querySelectorAll('.txt p');let i=0;const me=cur;
  const v=(synth.getVoices()||[]).find(x=>/^it/i.test(x.lang));
  const go=()=>{if(cur!==me)return;ps.forEach((p,j)=>p.classList.toggle('on',j===i));if(i>=paras.length){stop();return}
@@ -297,6 +306,22 @@ view(arrived?'here':'off');
 
 /* SCHERMATE: una alla volta */
 {
+
+/* ICONE ASCOLTA */
+const SPK='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg>';
+const PAU='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 6v12M15.5 6v12" stroke-width="3.2"/></svg>';
+const ic=(b,lab)=>{if(!b)return b;b.classList.add('ic');b.innerHTML=SPK;b.dataset.p=PAU;b.setAttribute('aria-label',lab);return b};
+const row=(btn,title,small,tag)=>{const r=document.createElement('div');r.className='tt';r.appendChild(btn);const t=document.createElement(tag||'h3');t.innerHTML=title+(small?'<small>'+small+'</small>':'');r.appendChild(t);return r};
+/* capitoli fuori: il bottone va prima del titolo */
+document.querySelectorAll('.ch').forEach(c=>{const hd=c.querySelector('.ch-h'),b=c.querySelector('.play'),t=hd.querySelector('h3');ic(b,'Ascolta: '+t.textContent);hd.className='tt';hd.prepend(b)});
+/* zone: nuova riga titolo con bottone, numero e durata sotto il titolo */
+D.zone.forEach(z=>{const a=$('z'+z.n),b=a.querySelector('.zb > .play');if(!b)return;ic(b,'Ascolta la zona '+z.n);
+ a.querySelector('.zb').prepend(row(b,esc(z.nome),'Zona '+z.n+' · '+esc(z.breve)+' · '+z.min+' min'+(z.opz?' · facoltativa':'')))});
+/* musica */
+document.querySelectorAll('.mus').forEach(m=>{const b=m.querySelector('.mplay'),t=m.querySelector('b');ic(b,'Ascolta la musica');const r=row(b,t.innerHTML,'','b');t.replaceWith(r)});
+/* Perché Cammino Sonoro: titolo con bottone, testo dietro "Leggi" */
+{const c=$('cam'),b=$('pcam');if(c&&b){ic(b,'Ascolta: perché Cammino Sonoro');const t=c.querySelector('b'),p=c.querySelector('p');p.classList.add('txt');const d=document.createElement('details');d.className='leggi';d.innerHTML='<summary>📖 Leggi il testo</summary>';d.appendChild(p);c.innerHTML='';c.append(row(b,esc(D.cammino.titolo),'','b'),d);
+ b.onclick=e=>play(e.currentTarget,c,[D.cammino.testo],D.audio.cam)}}
 const main=document.querySelector('main'),head=document.querySelector('.head');
 const sec=[...main.querySelectorAll('section.g')].find(s=>!s.classList.contains('head'));
 const mk=(id,kick)=>{const s=document.createElement('section');s.className='step g';s.id=id;s.innerHTML='<div class="wrap">'+(kick?'<div class="kick stepk">'+kick+'</div>':'')+'</div>';main.appendChild(s);return s.firstChild};
@@ -309,7 +334,7 @@ const S=[];
 /* 0: inizio */
 const hero=$('hero'),w0=mk('s-inizio');
 w0.append(...head.querySelector('.wrap').childNodes);head.remove();
-const cam=$('cam');if(cam){xtra('♪ Perché «Cammino Sonoro»',cam)}
+
 const gps=$('gps');const gd=xtra('📍 Avviso di arrivo con il GPS',gps);(w0.querySelector('.mapd')||w0.lastChild).after(gd);
 const cuf=w0.querySelector('.cuf');cuf.after(hero);hero.querySelectorAll('.g').forEach(g=>g.classList.remove('g'));
 S.push({el:w0.parentNode,nome:'Inizio',bar:['Prossimo ritrovo','Sul sagrato del Mariendom, davanti alla torre']});
