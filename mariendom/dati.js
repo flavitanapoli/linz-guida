@@ -120,7 +120,7 @@ window.DOM = {
  ['Rosoni','Avvicinatevi al coro e fermatevi davanti all\'altare, senza salire i gradini: zona 4.',null],
  ['Altare','Girate attorno al coro partendo dal lato sinistro: lì cominciano le cappelle, zona 5. [v: verificare che il passaggio dietro il coro sia aperto]','altare'],
  ['Cappelle','Al centro della corona, proprio dietro l\'altare, c\'è la cappella più grande: zona 6.',null],
- ['Votiva','Facoltativo: la scala per la cripta è accanto alle sacrestie, zona 7 [v: chiedere al Domcenter]. Altrimenti tornate all\'ingresso sotto la torre.',null],
+ ['Votiva','Facoltativo: la scala per la cripta è accanto alle sacrestie, zona 7. Altrimenti tornate all\'ingresso sotto la torre.',null],
  ['Cripta','Risalite e tornate all\'ingresso sotto la torre: è il punto di ritrovo del gruppo.','presepe']
 ].forEach((a,i)=>{const z=window.DOM.zone[i];z.corto=a[0];z.dopo=a[1];if(a[2])z.foto=a[2];});
 window.DOM.fotoSlot={

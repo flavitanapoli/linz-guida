@@ -171,7 +171,7 @@ if(D.gioco)h+=`<section class="pg"><div class="kick">IL GIOCO DEL DUOMO</div><h2
 const count=(h.match(/class="pg/g)||[]).length;
 let extra=(4-((count+1)%4))%4;
 for(let i=0;i<extra;i++)h+=`<section class="pg"><div class="kick">APPUNTI</div><h2 style="font-size:20pt;margin:2mm 0 4mm">Le vostre note</h2>${'<div class="line"></div>'.repeat(18)}<div class="grow"></div>${foot()}</section>`;
-h+=`<section class="pg" style="justify-content:flex-end"><div style="border-top:1.4mm solid var(--acc);padding-top:4mm;margin-bottom:14mm"><h2 style="font-size:16pt;color:var(--acc)">Cammino Sonoro di Linz</h2><p style="font-size:9.5pt;color:var(--grey)">Tappa pilota · prototipo del libretto, novembre 2026.<br>Stampare in A5 su carta avorio opaca, oppure due pagine per foglio A4.</p></div></section>`;
+h+=`<section class="pg" style="justify-content:flex-end"><div style="border-top:1.4mm solid var(--acc);padding-top:4mm;margin-bottom:14mm"><h2 style="font-size:16pt;color:var(--acc)">Cammino Sonoro di Linz</h2><p style="font-size:9.5pt;color:var(--grey)">Stampare in A5 su carta avorio opaca, oppure due pagine per foglio A4.</p></div></section>`;
 document.getElementById('out').innerHTML=h;
 }
 </script></body></html>
