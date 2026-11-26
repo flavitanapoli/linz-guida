@@ -86,7 +86,7 @@ const head=(z,cont)=>`<div class="kick">CAMMINO SONORO DI LINZ · TAPPA 6 · DEN
 <div class="top"><div class="mini">${DIS.nav(z.n)}<div class="cap">Siete qui: ${z.n}${z.n<7?' · poi '+(z.n+1):''}</div></div><div><div class="big">${String(z.n).padStart(2,'0')}</div><h2>${esc(z.nome)}${cont?' <span style="font-size:11pt;color:var(--grey)">(continua)</span>':''}</h2>
 <div class="meta"><span>${I.tempo}${z.min} minuti</span><span>Zona ${z.n} di 7${z.opz?' · facoltativa':''}</span></div></div>`;
 const tail=z=>`</div><div class="look"><div class="sec">${I.cerca}Cosa cercare</div>${z.cerca.map(c=>`<div class="i">${fmt(c)}</div>`).join('')}</div>
-${(q=>q?`<div class="quiz"><div class="q">? INDOVINA IL DETTAGLIO</div>${esc(q.d)}<div class="o">${q.o.map((o,i)=>`<span>☐ ${'ABC'[i]}. ${esc(o)}</span>`).join('')}</div></div>`:'')(D.gioco&&D.gioco[z.n-1])}
+${(q=>q?`<div class="quiz"><div class="q">? INDOVINA IL DETTAGLIO</div>${esc(q.d)}<div class="o">${q.o.map((o,i)=>`<span>☐ ${'ABC'[i]}. ${esc(o)}</span>`).join('')}</div></div>`:'')(null)}
 <div class="next"><div class="sec">${I.dopo}Dove andare dopo</div>${fmt(z.dopo)}</div>`;
 let h='';
 
@@ -108,7 +108,6 @@ h+=`<section class="pg"><div class="kick">PRIMA DI COMINCIARE</div><h2 style="fo
 ${I.ascolta}<span><b>Il racconto:</b> lo stesso testo che si ascolta sul telefono, con cuffie o auricolari</span>
 ${I.cerca}<span><b>Cosa cercare:</b> dettagli da trovare con gli occhi</span>
 ${I.dopo}<span><b>Dove andare dopo:</b> come raggiungere la zona successiva</span>
-<b style="color:var(--acc);font-size:13pt;text-align:center">?</b><span><b>Indovina il dettaglio:</b> un piccolo gioco per zona, per chi vuole. Soluzioni in fondo, a testa in giù</span>
 ${I.tempo}<span><b>Minuti:</b> quanto ci fermiamo in ogni zona</span>
 </div>
 <div class="box" style="border-color:var(--acc)"><div class="sec" style="margin-top:0">In chiesa</div>${esc(D.avviso)}</div>
@@ -162,7 +161,7 @@ h+=`<section class="pg"><div class="kick">FONTI E CREDITI</div><h2 style="font-s
 <div class="grow"></div>${foot()}</section>`;
 
 /* soluzioni del gioco */
-if(D.gioco)h+=`<section class="pg"><div class="kick">IL GIOCO DEL DUOMO</div><h2 style="font-size:20pt;margin:2mm 0 3mm">Indovina il dettaglio: le soluzioni</h2>
+if(false)h+=`<section class="pg"><div class="kick">IL GIOCO DEL DUOMO</div><h2 style="font-size:20pt;margin:2mm 0 3mm">Indovina il dettaglio: le soluzioni</h2>
 <p>Girate il libretto per leggerle. Niente sbirciate prima di aver visto il dettaglio con i vostri occhi!</p>
 <div class="sol">${D.gioco.map((q,i)=>`<div><b>Zona ${i+1}: ${'ABC'[q.r]}.</b> ${esc(q.o[q.r])}. ${esc(q.p)}</div>`).join('')}</div>
 <p style="margin-top:4mm;color:var(--grey);font-size:10pt">Quante ne avete indovinate? ___ su 7</p>
