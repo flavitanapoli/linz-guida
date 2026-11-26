@@ -162,8 +162,8 @@ footer{padding-block:10px 40px}
 <footer class="g"><div class="wrap src">Cammino Sonoro di Linz · guida per il gruppo della parrocchia</div></footer>
 </main>
 
-<script src="dati.js?v=22"></script>
-<script src="disegni.js?v=22"></script>
+<script src="dati.js?v=23"></script>
+<script src="disegni.js?v=23"></script>
 <script>
 {
 const D=window.DOM,$=id=>document.getElementById(id);
@@ -179,7 +179,7 @@ setFs(fs);$('am').onclick=()=>setFs(fs-2);$('ap').onclick=()=>setFs(fs+2);
 
 /* intestazione */
 if(D.mappa){const m=$('map');m.href=D.mappa.url;m.hidden=false}
-if(D.cammino){$('cam').innerHTML=`<b>${esc(D.cammino.titolo)}</b><p>${esc(D.cammino.testo)}</p>`}else{$('cam').remove()}
+if(D.cammino){$('cam').innerHTML=`<b>${esc(D.cammino.titolo)}</b><p>${esc(D.cammino.testo)}</p>${D.audio&&D.audio.cam?'<button class="play" id="pcam" style="margin-top:10px">▶ Ascolta</button>':''}`;if($('pcam'))$('pcam').onclick=e=>play(e.currentTarget,$('cam'),[D.cammino.testo],D.audio.cam)}else{$('cam').remove()}
 if(D.foto&&D.foto.s1914&&D.foto.s2016){const F=D.foto,io=D.ieriOggi;$('hero').innerHTML=`<div class="ba" id="ba" style="--x:50%"><img src="${F.s2016.src}" alt="${esc(F.s2016.cap)}"><img class="old" src="${F.s1914.src}" alt="${esc(F.s1914.cap)}"><span class="tg l">1914</span><span class="tg r">Oggi</span><span class="ln"></span><span class="kn" aria-hidden="true">⇆</span><input type="range" min="0" max="100" value="50" aria-label="Confronto 1914 e oggi: spostate per vedere il prima e il dopo"></div><div class="g"><p class="bacap">${esc(io.nota)}</p></div>`;
 const ba=$('ba'),rg=ba.querySelector('input');rg.oninput=()=>ba.style.setProperty('--x',rg.value+'%');}
 $('st').textContent=D.sottotitolo;$('du').textContent='Durata '+D.durata;$('arr').textContent=D.arrivo;
