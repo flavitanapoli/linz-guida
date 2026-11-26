@@ -25,7 +25,7 @@ window.DOM = {
         'Se vi capita di sentirle suonare, ascoltate la nota più profonda: è lei.'] }
   ],
 
-  avviso: 'In chiesa si parla sottovoce. Durante le Messe e le funzioni le visite non sono permesse: aspettiamo la fine o restiamo seduti in fondo. Con le radioguide l\'audio arriva solo nell\'auricolare e non disturba nessuno.',
+  avviso: 'In chiesa si parla sottovoce. Durante le Messe e le funzioni le visite non sono permesse: aspettiamo la fine o restiamo seduti in fondo.',
 
   zone: [
     { n:1, nome:'Ingresso sotto la torre', breve:'L\'organo alle vostre spalle', x:50, y:88, min:3,
