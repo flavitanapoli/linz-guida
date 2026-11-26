@@ -86,6 +86,7 @@ a{color:var(--red)}
 .ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;margin:0;cursor:ew-resize}
 
 .mus{margin:14px 0;padding:12px 14px;border-radius:12px;background:var(--panel);color:var(--ink);border-left:4px solid var(--red)}.mus p{margin:4px 0 8px}
+.flink{display:flex;gap:8px;align-items:center;min-height:48px;margin:10px 0;padding:10px 14px;border-radius:12px;border:2px solid var(--red);color:var(--ink);font-weight:700;text-decoration:none}.flink svg{width:22px;height:22px;flex:none;color:var(--red);fill:currentColor}
 .bacap{font-size:.8rem;color:var(--soft);margin:6px 0 0}
 .gps{border:2px solid var(--line);border-radius:16px;padding:14px;margin:14px 0}
 .gps h3{display:flex;align-items:center;gap:8px}
@@ -155,8 +156,8 @@ footer{padding-block:10px 40px}
 <footer class="g"><div class="wrap src">Cammino Sonoro di Linz · guida per il gruppo della parrocchia</div></footer>
 </main>
 
-<script src="dati.js?v=17"></script>
-<script src="disegni.js?v=17"></script>
+<script src="dati.js?v=18"></script>
+<script src="disegni.js?v=18"></script>
 <script>
 {
 const D=window.DOM,$=id=>document.getElementById(id);
@@ -204,7 +205,7 @@ drawPlan();
 let checks={};try{checks=JSON.parse(localStorage.getItem('chkD')||'{}')}catch(e){}
 $('zone').innerHTML=D.zone.map(z=>`<article class="zone" id="z${z.n}">
  <button class="zh" aria-expanded="false"><span class="n" style="${z.opz?'background:var(--soft)':''}">${z.n}</span><span><h3>${esc(z.nome)}</h3><small>${esc(z.breve)} · ${z.min} min${z.opz?' · facoltativa':''}</small></span><span class="ar" aria-hidden="true">⌄</span></button>
- <div class="zb" hidden><div class="prog">${D.zone.map(y=>`<span data-p="${y.n}">${y.n}<br>${esc(y.corto)}</span>`).join('')}</div>${z.foto?(D.foto&&D.foto[z.foto]?fig(z.foto):`<div class="slot">${DIS.ico.foto}<br>Foto: ${esc(D.fotoSlot[z.foto])}<br>(foto libera ancora da trovare)</div>`):''}<button class="play">▶ Ascolta</button>
+ <div class="zb" hidden><div class="prog">${D.zone.map(y=>`<span data-p="${y.n}">${y.n}<br>${esc(y.corto)}</span>`).join('')}</div>${z.foto?(D.foto&&D.foto[z.foto]?fig(z.foto):(D.fotoLink&&D.fotoLink[z.foto]?`<a class="flink" href="${D.fotoLink[z.foto].url}" target="_blank" rel="noopener">${DIS.ico.foto} ${esc(D.fotoLink[z.foto].testo)} →</a>`:``)):''}<button class="play">▶ Ascolta</button>
  <div class="txt">${z.testo.map(p=>`<p>${fmt(p)}</p>`).join('')}</div>${z.foto2&&D.foto&&D.foto[z.foto2]?fig(z.foto2):''}${(m=>m?`<div class="mus"><b>♪ ${esc(m.titolo)}</b><p>${esc(m.testo)}</p><button class="play mplay">▶ Ascolta la musica</button><p class="src">${esc(m.cred)}</p></div>`:'')(D.musica&&D.musica[z.n])}
  <div class="look"><b>Cosa cercare</b>${z.cerca.map((c,k)=>`<label><input type="checkbox" data-k="${z.n}-${k}" ${checks[z.n+'-'+k]?'checked':''}><span>${fmt(c)}</span></label>`).join('')}</div>
  ${(q=>q?`<div class="quiz" data-q="${z.n}"><b>Indovina il dettaglio</b><p>${esc(q.d)}</p>${q.o.map((o,i)=>`<button data-i="${i}">${'ABC'[i]}. ${esc(o)}</button>`).join('')}<p class="qr" hidden></p></div>`:'')(D.gioco&&D.gioco[z.n-1])}${z.nota?`<p class="src">${fmt(z.nota)}</p>`:''}<div class="next"><b>Dove andare dopo</b>${fmt(z.dopo)}${z.n<7?`<br><button class="go" data-go="${z.n+1}">Zona ${z.n+1}: ${esc(D.zone[z.n].corto)} →</button>`:''}</div><a href="#plan" class="src" style="display:inline-block;padding:10px 0;min-height:44px">↑ Torna alla pianta</a></div></article>`).join('');

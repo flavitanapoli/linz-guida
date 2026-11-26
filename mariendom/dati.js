@@ -43,7 +43,7 @@ window.DOM = {
         'Un dettaglio curioso: in alcune vetrate compaiono i ritratti dei benefattori che pagarono le finestre, dipinti copiando le loro fotografie. Cercate volti dall\'aria «moderna», con baffi e colletti dell\'epoca, accanto ai santi.',
         'La vetrata più famosa è la «Finestra di Linz»: la città raccontata dai suoi personaggi. Sopra il profilo di Linz c\'è Maria; più sotto tre imperatori e l\'astronomo Keplero con il cannocchiale. In basso, sulla stessa lastra, Beethoven e Bruckner.',
         'La pagò la Cassa di risparmio di Linz: 10.000 corone, più delle 8.000 sperate dal vescovo. Il grazie è nel vetro: il presidente della banca dà un libretto di risparmio a due contadini, e sotto le api lavorano attorno all\'alveare.'],
-      cerca:['Volti di benefattori nelle vetrate','La «Finestra di Linz» con Beethoven e Bruckner [v: chiedere al Domcenter dove si trova]','La Via Crucis del 1960, con figure a grandezza naturale'] },
+      cerca:['Volti di benefattori nelle vetrate','La «Finestra di Linz» con Beethoven e Bruckner, tra le grandi vetrate della navata','La Via Crucis del 1960, con figure a grandezza naturale'] },
     { n:3, nome:'L\'incrocio e i due rosoni', breve:'La guerra e la pace, una di fronte all\'altra', x:50, y:47, min:3,
       testo:[
         'Siamo al centro della croce, dove la navata incontra il transetto. Guardate a destra e a sinistra: i due bracci si chiudono con due grandi rosoni, uno di fronte all\'altro.',
@@ -80,15 +80,14 @@ window.DOM = {
         'Sulla parete dietro l\'altare c\'è la prima pietra del Duomo, posata nel 1862, con una lapide in latino.',
         'Nella cripta si trova anche il presepe di Sebastian Osterrieder, scultore di Monaco. Il vescovo Doppelbauer glielo commissionò nel 1908; fu completato per il Natale 1913 e dal 1921 sta qui in modo permanente.',
         'Conta circa ottanta figure in legno di tiglio, dipinte e dorate, ed è considerato uno dei presepi più grandi del mondo. Nel 2020–2021 è stato restaurato completamente.'],
-      cerca:['La tomba del vescovo Rudigier','La prima pietra del 1862','Il presepe di Osterrieder'],
-      nota:'Cripta: verificare con il Domcenter se è aperta ai gruppi a fine marzo [v].' }
+      cerca:['La tomba del vescovo Rudigier','La prima pietra del 1862','Il presepe di Osterrieder'] }
   ],
 
   finale: 'Il nostro giro del Duomo finisce qui. Ritrovatevi all\'ingresso sotto la torre.',
 
   pranzo: {
     nome:'Pranzo da Vapiano',
-    indirizzo:'Schmidtorstraße 1, angolo Hauptplatz [v: confermare con il ristorante]',
+    indirizzo:'Schmidtorstraße 1, 4020 Linz',
     strada:'Circa 12–15 minuti a piedi (stima). Dal Duomo raggiungete la Landstraße, la via pedonale dei negozi, un isolato verso est. Seguitela verso nord fino al Taubenmarkt; la breve Schmidtorstraße porta all\'Hauptplatz. Vapiano è sull\'angolo.'
   },
 
@@ -118,7 +117,7 @@ window.DOM = {
  ['Ingresso','Avanzate lungo la navata centrale, verso l\'altare. Fermatevi a metà: è la zona 2.',null],
  ['Navata','Proseguite fino a dove la chiesa si allarga a destra e a sinistra: è l\'incrocio, zona 3.',null],
  ['Rosoni','Avvicinatevi al coro e fermatevi davanti all\'altare, senza salire i gradini: zona 4.',null],
- ['Altare','Girate attorno al coro partendo dal lato sinistro: lì cominciano le cappelle, zona 5. [v: verificare che il passaggio dietro il coro sia aperto]','altare'],
+ ['Altare','Girate attorno al coro partendo dal lato sinistro: lì cominciano le cappelle, zona 5.','altare'],
  ['Cappelle','Al centro della corona, proprio dietro l\'altare, c\'è la cappella più grande: zona 6.',null],
  ['Votiva','Facoltativo: la scala per la cripta è accanto alle sacrestie, zona 7. Altrimenti tornate all\'ingresso sotto la torre.',null],
  ['Cripta','Risalite e tornate all\'ingresso sotto la torre: è il punto di ritrovo del gruppo.','presepe']
@@ -185,3 +184,6 @@ window.DOM.audio={f1:'audio/mariendom-01-guardate.mp3',f2:'audio/mariendom-02-st
 
 /* musica da ascoltare in una zona */
 window.DOM.musica={6:{src:'audio/bruckner-kyrie-1938.mp3',titolo:'Ascoltate Bruckner',testo:'L\'inizio del Kyrie della Messa in mi minore, la Messa scritta per questa cappella. Poco più di un minuto e mezzo.',cred:'Filarmonica di Amburgo, direttore Max Thurn, disco Telefunken del 1938. Pubblico dominio, da Wikimedia Commons.',link:'https://commons.wikimedia.org/wiki/File:PDP-CH_-_Philharmoniker_Hamburg,_Max_Thurn_-_Mass_No._2_in_E_minor,_WAB_27_-_1st_Movement,_Kyrie,_Part_1_-_Bruckner_-_Telefunken-e2607-023233.flac'}};
+
+/* foto non libere: sul sito solo un collegamento alla pagina ufficiale */
+window.DOM.fotoLink={presepe:{url:'https://www.dioezese-linz.at/mariendom/erleben/osterriederkrippe',testo:'Guardate le foto del presepe sul sito della diocesi'}};
