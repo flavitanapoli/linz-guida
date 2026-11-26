@@ -134,10 +134,10 @@ h+=`<section class="pg"><div class="kick">FUORI, SUL SAGRATO</div><h2 style="fon
 /* zone */
 Z.forEach(z=>{
   if(z.split){
-    h+=`<section class="pg">${head(z)}${z.foto?slot(z.foto,54):''}<div class="sec">${I.ascolta}Il racconto</div>${P(z.testo.slice(0,z.split))}<p class="vn">Continua alla pagina seguente →</p></div><div class="grow"></div>${prog(z.n)}${foot()}</section>`;
+    h+=`<section class="pg">${head(z)}${z.foto&&!(D.foto[z.foto]&&D.foto[z.foto].solo==='web')?slot(z.foto,54):''}<div class="sec">${I.ascolta}Il racconto</div>${P(z.testo.slice(0,z.split))}<p class="vn">Continua alla pagina seguente →</p></div><div class="grow"></div>${prog(z.n)}${foot()}</section>`;
     h+=`<section class="pg">${head(z,true)}<div class="sec">${I.ascolta}Il racconto</div>${P(z.testo.slice(z.split))}${tail(z)}<div class="grow"></div>${prog(z.n)}${foot()}</section>`;
   } else {
-    h+=`<section class="pg">${head(z)}${z.foto?slot(z.foto,28):''}<div class="sec">${I.ascolta}Il racconto</div>${P(z.testo)}${tail(z)}<div class="grow"></div>${prog(z.n)}${foot()}</section>`;
+    h+=`<section class="pg">${head(z)}${z.foto&&!(D.foto[z.foto]&&D.foto[z.foto].solo==='web')?slot(z.foto,28):''}<div class="sec">${I.ascolta}Il racconto</div>${P(z.testo)}${tail(z)}<div class="grow"></div>${prog(z.n)}${foot()}</section>`;
   }
 });
 

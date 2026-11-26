@@ -20,7 +20,7 @@ window.DOM = {
         'I lavori durarono sessantadue anni. Si cominciò sotto l\'imperatore Francesco Giuseppe, quando Linz faceva parte dell\'Impero asburgico, che dal 1867 divenne Impero austro-ungarico. Poi vennero la Prima guerra mondiale e, nel 1918, la fine dell\'Impero. Il Duomo fu consacrato il 29 aprile 1924: in una Repubblica austriaca piccola e povera, ma con la sua cattedrale finalmente compiuta.',
         'Rudigier non la vide finita: morì nel 1884. Dopo Statz, i lavori passarono al figlio Franz e infine al capomastro del Duomo, Matthäus Schlager.',
         'Nel 1886 i costruttori fecero una mossa astuta: cominciarono la torre, staccata dalla chiesa ancora incompiuta. Così nessuno, per mancanza di soldi, avrebbe potuto rimpicciolire il progetto: prima o poi i due pezzi andavano uniti. E i soldi vennero solo dalle offerte dei fedeli.'] },
-    { id:'f3', titolo:'Il dettaglio: le campane', min:2,
+    { id:'f3', titolo:'Il dettaglio: le campane', min:2, foto:'campane',
       testo:[
         'Nella torre ci sono sette campane, fuse nel 1901 da Anton Gugg. La più grande si chiama «Immaculata» e pesa 8.120 chili, più di un camion carico.',
         'Quando suonano tutte e sette insieme, intonano l\'inizio del «Salve Regina». È l\'unico grande concerto di campane del 1900 rimasto completo in tutti i paesi di lingua tedesca.',
@@ -58,7 +58,7 @@ window.DOM = {
         'La mensa è di marmo bianco di Lasa, in Alto Adige. Sul fronte, quattro mosaici mostrano Abele, Noè, Melchisedek e Abramo: offerte a Dio dell\'Antico Testamento, lette come annuncio dell\'Eucaristia.',
         'Le undici vetrate del coro, del 1885, raccontano Maria nella vita di Gesù. Alcune sono in restauro: un lavoro che dovrebbe concludersi entro il 2030.'],
       cerca:['L\'Immacolata in cima: il Bambino con un\'asta a croce schiaccia la testa del serpente','I quattro mosaici sulla mensa','Le vetrate del coro con Maria'] },
-    { n:5, nome:'La corona di cappelle', breve:'Un santo, un vescovo e un contadino martire', x:24, y:18, min:5,
+    { n:5, nome:'La corona di cappelle', breve:'Un santo, un vescovo e un contadino martire', x:24, y:18, min:5, foto:'cappelle',
       testo:[
         'Attorno al coro gira una corona di cappelle. Ognuna è dedicata a Maria con un titolo diverso: Regina degli apostoli, dei martiri, dei profeti, delle vergini e così via. Percorretele con calma; ecco cosa cercare.',
         'Nella cappella di Maria Regina dei patriarchi, con san Giuseppe, c\'è il vescovo Rudigier disteso, in bronzo, del 1892: l\'imperatore Francesco Giuseppe ne lodò la somiglianza. È un monumento, non la tomba: Rudigier è sepolto nella cripta. Cercate la tavola con la pianta del Duomo: in colore, le poche parti finite quando morì.',
@@ -206,3 +206,5 @@ window.DOM.offlineMB=11;
 window.DOM.foto.organo={src:'foto/organo.jpg',cap:'L\'organo grande sopra l\'ingresso, visto dalla navata.',autore:'Uoaei1',licenza:'CC BY-SA 4.0',licUrl:'https://creativecommons.org/licenses/by-sa/4.0/',link:'https://commons.wikimedia.org/wiki/File:Linz_Neuer_Dom_Rudigier-Orgel_01.jpg'};
 window.DOM.foto.rosoni={src:'foto/rosoni.jpg',cap:'I due rosoni del transetto, uno di fronte all\'altro.',autore:'Zairon (due foto)',licenza:'CC BY-SA 3.0',licUrl:'https://creativecommons.org/licenses/by-sa/3.0/',link:'https://commons.wikimedia.org/wiki/File:Linz_Neuer_Dom_Innen_Rosette_1.JPG'};
 window.DOM.foto.votiva={src:'foto/votiva.jpg',cap:'La cappella votiva: l\'altare bianco con il tabernacolo e i mosaici dorati sotto le finestre.',autore:'DerHHO',licenza:'CC BY-SA 3.0',licUrl:'https://creativecommons.org/licenses/by-sa/3.0/',link:'https://commons.wikimedia.org/wiki/File:Linzer_Dom_Innen_06.jpg'};
+window.DOM.foto.campane={src:'foto/campane.jpg',cap:'L\'«Immaculata», la campana più grande, nella torre.',autore:'Matti Blume',licenza:'CC BY-SA 4.0',licUrl:'https://creativecommons.org/licenses/by-sa/4.0/',link:'https://commons.wikimedia.org/wiki/File:Mariendom,_Linz_(P1130939-RR-HDR).jpg',solo:'web'};
+window.DOM.foto.cappelle={src:'foto/cappelle.jpg',cap:'Il monumento in bronzo al vescovo Rudigier, nella cappella di Maria Regina dei patriarchi.',autore:'Andreas Praefcke',licenza:'CC BY 3.0',licUrl:'https://creativecommons.org/licenses/by/3.0/',link:'https://commons.wikimedia.org/wiki/File:Linz_Neuer_Dom_Rudigier-Grab.jpg',solo:'web'};
