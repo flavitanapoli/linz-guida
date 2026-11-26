@@ -92,7 +92,7 @@ let h='';
 
 /* 1 copertina */
 h+=`<section class="pg cover"><div class="band"><div class="kick" style="color:#f3d9dd">CAMMINO SONORO DI LINZ · TAPPA 6 DI 6</div><h1>Mariendom</h1><div class="serif" style="font-size:14pt;margin-top:2mm">${esc(D.sottotitolo)}</div></div>
-${slot('esterno',92)}<div class="low"><p>Guida alla visita per il gruppo della parrocchia.<br>Fuori sul sagrato, poi sette zone dentro il Duomo.</p></div>${D.cammino?`<div style="border-left:1.2mm solid var(--acc);padding:1mm 0 1mm 3mm;margin:5mm 12mm 0"><div class="serif" style="font-size:12pt;font-weight:700">${esc(D.cammino.titolo)}</div><p style="margin:1mm 0 0">${esc(D.cammino.testo)}</p></div>`:''}
+${slot('esterno',92)}<div class="low"><p>Guida alla visita per il gruppo della parrocchia.<br>Fuori sul sagrato, poi sette zone dentro il Duomo.</p></div>${D.cammino?`<div style="border-left:1.2mm solid var(--acc);padding:1mm 0 1mm 3mm;margin:5mm 12mm 0"><div class="serif" style="font-size:12pt;font-weight:700">${esc(D.cammino.titolo)}</div><p style="margin:1mm 0 0">${esc(D.cammino.testo)}</p></div>`:''}${D.mappa?`<div style="display:flex;gap:4mm;align-items:center;margin:4mm 12mm 0"><img src="foto/qr-mappa.svg" style="width:22mm;height:22mm" alt=""><p style="margin:0;font-size:9.5pt"><b>La mappa del percorso</b><br>Inquadrate il codice con la fotocamera del telefono: si apre la mappa con le sei tappe e il ristorante.</p></div>`:''}
 <div class="grow"></div><div style="padding:0 12mm">${(()=>{page++;return '<div class="foot" style="border:0"><span></span><span></span></div>'})()}</div></section>`;
 
 /* 2 come si usa */

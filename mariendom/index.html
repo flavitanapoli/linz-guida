@@ -89,6 +89,7 @@ a{color:var(--red)}
 .flink{display:flex;gap:8px;align-items:center;min-height:48px;margin:10px 0;padding:10px 14px;border-radius:12px;border:2px solid var(--red);color:var(--ink);font-weight:700;text-decoration:none}.flink svg{width:22px;height:22px;flex:none;color:var(--red);fill:currentColor}
 .cam{margin:14px 0 4px;padding:12px 14px;border-radius:12px;background:var(--panel);color:var(--ink);border-left:4px solid var(--gold)}.cam b{display:block;margin-bottom:4px}.cam p{margin:0}
 .cuf{margin:10px 0 0;font-weight:700}
+.mapb{display:inline-block;margin:12px 0 0;padding:10px 16px;border-radius:12px;background:var(--red);color:var(--bg);font-weight:700;text-decoration:none}
 .bacap{font-size:.8rem;color:var(--soft);margin:6px 0 0}
 .gps{border:2px solid var(--line);border-radius:16px;padding:14px;margin:14px 0}
 .gps h3{display:flex;align-items:center;gap:8px}
@@ -132,6 +133,7 @@ footer{padding-block:10px 40px}
   <p class="meta" id="st"></p>
   <span class="pill" id="du"></span><span class="pill">Interno in piano, panche per sedersi</span>
   <p class="cuf">🎧 Per ascoltare i racconti servono cuffie o auricolari collegati al telefono.</p>
+  <a class="mapb" id="map" hidden target="_blank" rel="noopener">🗺 Apri la mappa del percorso</a>
   <p id="arr"></p>
   <div class="cam" id="cam"></div>
 </div></section>
@@ -160,8 +162,8 @@ footer{padding-block:10px 40px}
 <footer class="g"><div class="wrap src">Cammino Sonoro di Linz · guida per il gruppo della parrocchia</div></footer>
 </main>
 
-<script src="dati.js?v=20"></script>
-<script src="disegni.js?v=20"></script>
+<script src="dati.js?v=21"></script>
+<script src="disegni.js?v=21"></script>
 <script>
 {
 const D=window.DOM,$=id=>document.getElementById(id);
@@ -176,6 +178,7 @@ const setFs=v=>{fs=Math.max(16,Math.min(26,v));document.documentElement.style.se
 setFs(fs);$('am').onclick=()=>setFs(fs-2);$('ap').onclick=()=>setFs(fs+2);
 
 /* intestazione */
+if(D.mappa){const m=$('map');m.href=D.mappa.url;m.hidden=false}
 if(D.cammino){$('cam').innerHTML=`<b>${esc(D.cammino.titolo)}</b><p>${esc(D.cammino.testo)}</p>`}else{$('cam').remove()}
 if(D.foto&&D.foto.s1914&&D.foto.s2016){const F=D.foto,io=D.ieriOggi;$('hero').innerHTML=`<div class="ba" id="ba" style="--x:50%"><img src="${F.s2016.src}" alt="${esc(F.s2016.cap)}"><img class="old" src="${F.s1914.src}" alt="${esc(F.s1914.cap)}"><span class="tg l">1914</span><span class="tg r">Oggi</span><span class="ln"></span><span class="kn" aria-hidden="true">⇆</span><input type="range" min="0" max="100" value="50" aria-label="Confronto 1914 e oggi: spostate per vedere il prima e il dopo"></div><div class="g"><p class="bacap">${esc(io.nota)}</p></div>`;
 const ba=$('ba'),rg=ba.querySelector('input');rg.oninput=()=>ba.style.setProperty('--x',rg.value+'%');}

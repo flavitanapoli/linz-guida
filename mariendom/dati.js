@@ -192,3 +192,6 @@ window.DOM.foto.presepe={src:'foto/presepe.jpg',pos:'50% 60%',cap:'Il presepe di
 
 /* perché il nome della guida */
 window.DOM.cammino={titolo:'Perché «Cammino Sonoro»',testo:'Linz è una città che si racconta con la musica. Bruckner fu per tredici anni organista del Duomo Vecchio. Mozart qui scrisse in quattro o cinque giorni la Sinfonia «Linz». Keplero qui pubblicò «L\'armonia del mondo». E dal 1979 la Klangwolke, la «nuvola sonora», porta la musica sul Danubio. Per questo la visitiamo così: camminando e ascoltando. Sei tappe, e a ogni tappa una voce che racconta.'};
+
+/* mappa del percorso (Google My Maps, sola lettura) */
+window.DOM.mappa={url:'https://www.google.com/maps/d/viewer?mid=12_Pj7vyBmFPnf3WmlMY6Mt7HnFZWDZ4',testo:'La mappa del percorso: le sei tappe e il ristorante.'};
