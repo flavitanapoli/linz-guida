@@ -198,3 +198,6 @@ window.DOM.mappa={img:'foto/mappa.svg',proj:{lon0:14.2832,lon1:14.2911,lat0:48.2
  {n:'1',nome:'Hauptplatz',lat:48.305847,lon:14.286442},{n:'2',nome:'Landhaus',lat:48.304156,lon:14.286027},{n:'3',nome:'Altstadt e Hofgasse',lat:48.305902,lon:14.285511},
  {n:'4',nome:'Mozarthaus',lat:48.304595,lon:14.285023},{n:'5',nome:'Alter Dom',lat:48.305090,lon:14.288082},{n:'6',nome:'Mariendom',lat:48.300556,lon:14.285556},
  {n:'🍴',nome:'Pranzo: Vapiano, Schmidtorstraße 1',lat:48.304844,lon:14.287398}]};
+
+/* peso della tappa scaricata (audio e foto), per il bottone "Scarica la guida" */
+window.DOM.offlineMB=11;

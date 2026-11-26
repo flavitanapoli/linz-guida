@@ -143,6 +143,15 @@ body{padding-bottom:100px}
 .play.ic svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .zone .zh{display:none}
 .cam .tt b{font-size:1.05rem}
+
+/* OFFLINE */
+.off{margin:12px 0;padding:12px 14px;border-radius:14px;border:2px solid var(--line);background:var(--panel)}
+.off[hidden]{display:none}
+.off button{display:block;width:100%;min-height:56px;border:0;border-radius:14px;background:var(--ink);color:var(--bg);font:inherit;font-weight:800}
+.off button.sm{display:inline;width:auto;min-height:0;background:none;color:var(--soft);text-decoration:underline;font-weight:600;padding:6px 0}
+.off p{margin:6px 0 0;font-size:.92rem}
+.off .ok{font-weight:800;margin:0}
+.off .barra{height:12px;border-radius:6px;background:var(--line);overflow:hidden;margin-top:8px}.off .barra i{display:block;height:100%;width:0;background:var(--red);transition:width .2s}
 </style>
 
 <div class="bar g" role="status"><div class="wrap">
@@ -158,6 +167,7 @@ body{padding-bottom:100px}
   <h1 id="t">Mariendom</h1>
   <p class="meta" id="st"></p>
   <span class="pill" id="du"></span><span class="pill">Interno in piano, panche per sedersi</span>
+  <div class="off" id="off" hidden></div>
   <p class="cuf">🎧 Per ascoltare i racconti servono cuffie o auricolari collegati al telefono.</p>
   <details class="mapd" id="mapd" hidden><summary class="mapb">🗺 La mappa del percorso</summary><div class="mapw"><img id="mapi" alt="Mappa del percorso a piedi con le sei tappe"><span class="me" id="me" hidden></span></div><p class="mapn" id="mapn"></p><button class="dove" id="dove">📍 Dove sono io?</button><ol class="mapl" id="mapl"></ol></details>
   <p id="arr"></p>
@@ -189,8 +199,8 @@ body{padding-bottom:100px}
 </main>
 <nav class="nav" id="nav" aria-label="Schermate"><span class="nc" id="nc"></span><button id="nb">← Indietro</button><button id="nf">Avanti →</button></nav>
 
-<script src="dati.js?v=29"></script>
-<script src="disegni.js?v=29"></script>
+<script src="dati.js?v=30"></script>
+<script src="disegni.js?v=30"></script>
 <script>
 {
 const D=window.DOM,$=id=>document.getElementById(id);
@@ -304,6 +314,33 @@ $('arrNo').onclick=()=>{$("arrDlg").hidden=true};
 view(arrived?'here':'off');
 }
 
+
+/* OFFLINE: scaricare la guida con il wifi e usarla senza internet */
+{
+const box=$('off'),CN='linz-guida';
+const ok=('serviceWorker' in navigator)&&('caches' in window)&&window.isSecureContext&&/^https?:$/.test(location.protocol);
+if(ok){
+ navigator.serviceWorker.register('../sw.js',{scope:'../'}).then(()=>{box.hidden=false;check()}).catch(()=>{});
+ const list=()=>{const s=new Set(['./','index.html']);
+  [...document.scripts].forEach(x=>{const a=x.getAttribute('src');if(a)s.add(a)});
+  Object.values(D.audio||{}).forEach(a=>s.add(a));Object.values(D.musica||{}).forEach(m=>s.add(m.src));
+  Object.values(D.foto||{}).forEach(f=>s.add(f.src));if(D.mappa)s.add(D.mappa.img);return [...s]};
+ const mb=D.offlineMB?' (circa '+D.offlineMB+' MB)':'';
+ const ios=/iPhone|iPad|iPod/.test(navigator.userAgent);
+ const nota=ios?'<p>Su iPhone scaricatela pochi giorni prima della gita: dopo molti giorni senza aprirla, il telefono può cancellarla.</p>':'';
+ const view=(st,x)=>{
+  if(st==='no')box.innerHTML=`<button id="offGo">📥 Scarica la guida sul telefono${mb}</button><p>Fatelo con il wifi, per esempio in albergo. Poi la guida funziona anche senza internet, con audio e foto.</p>`;
+  if(st==='run')box.innerHTML=`<p class="ok">📥 Scarico la guida… ${x.i} di ${x.n}</p><div class="barra"><i style="width:${Math.round(x.i/x.n*100)}%"></i></div><p>Lasciate la pagina aperta fino alla fine.</p>`;
+  if(st==='si')box.innerHTML=`<p class="ok">✓ Guida scaricata: funziona anche senza internet.</p>${nota}<button class="sm" id="offGo">Scarica di nuovo</button>`;
+  if(st==='err')box.innerHTML=`<p class="ok">Download non completato.</p><p>Controllate di essere collegati al wifi e riprovate.</p><button id="offGo">Riprova</button>`;
+  const b=$('offGo');if(b)b.onclick=get};
+ const check=async()=>{try{const c=await caches.open(CN);for(const f of list()){if(!(await c.match(f)))return view('no')}view('si')}catch(e){view('no')}};
+ const get=async()=>{const L=list(),c=await caches.open(CN);let i=0;view('run',{i,n:L.length});
+  try{try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+   for(const f of L){const r=await fetch(f,{cache:'reload'});if(!r.ok)throw new Error(f);await c.put(f,r);i++;view('run',{i,n:L.length})}
+   view('si')}catch(e){view('err')}};
+}
+}
 /* SCHERMATE: una alla volta */
 {
 
