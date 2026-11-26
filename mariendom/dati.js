@@ -34,13 +34,14 @@ window.DOM = {
         'Fu inaugurato nel 1968 dalla ditta danese Marcussen ed è considerato uno dei più grandi organi meccanici del mondo: ogni tasto muove le canne con leve e tiranti, senza elettricità a fare il lavoro.',
         'Dietro l\'organo si nasconde un rosone con santa Cecilia, patrona della musica, circondata da musicisti e dai segni dello zodiaco. Da qui non si vede: si vede solo salendo nella sala dell\'organo.'],
       cerca:['L\'organo sopra la porta d\'ingresso','La luce che entra dalla navata davanti a voi'] },
-    { n:2, nome:'La navata', breve:'Colonne di granito e vetrate che raccontano', x:50, y:66, min:5, foto:'navata',
+    { n:2, nome:'La navata', breve:'Colonne di granito e vetrate che raccontano', x:50, y:66, min:5, foto:'navata', foto2:'finestra',
       testo:[
         'Camminate lentamente lungo la navata centrale. Le chiese gotiche sono costruite come una processione: le colonne di granito guidano lo sguardo verso l\'altare e verso l\'alto, fino alle volte.',
         'Ora guardate le finestre. Il Duomo ha più di cento vetrate dipinte. Quelle della navata e del transetto, realizzate tra il 1910 e il 1924, non raccontano solo storie sacre: raccontano la storia della regione, la vita del vescovo Rudigier e la costruzione stessa del Duomo.',
         'Un dettaglio curioso: in alcune vetrate compaiono i ritratti dei benefattori che pagarono le finestre, dipinti copiando le loro fotografie. Cercate volti dall\'aria «moderna», con baffi e colletti dell\'epoca, accanto ai santi.',
-        'La vetrata più famosa è la «Finestra di Linz», che racconta la storia della città; tra i personaggi c\'è anche Anton Bruckner.'],
-      cerca:['Volti di benefattori nelle vetrate','La «Finestra di Linz» con Bruckner [v: chiedere al Domcenter dove si trova]','Le 14 stazioni della Via Crucis, del 1960'] },
+        'La vetrata più famosa è la «Finestra di Linz»: la città raccontata dai suoi personaggi. Sopra il profilo di Linz c\'è Maria; più sotto tre imperatori e l\'astronomo Keplero con il cannocchiale. In basso, sulla stessa lastra, Beethoven e Bruckner.',
+        'La pagò la Cassa di risparmio di Linz: 10.000 corone, più delle 8.000 sperate dal vescovo. Il grazie è nel vetro: il presidente della banca dà un libretto di risparmio a due contadini, e sotto le api lavorano attorno all\'alveare.'],
+      cerca:['Volti di benefattori nelle vetrate','La «Finestra di Linz» con Beethoven e Bruckner [v: chiedere al Domcenter dove si trova]','Le 14 stazioni della Via Crucis, del 1960'] },
     { n:3, nome:'L\'incrocio e i due rosoni', breve:'La guerra e la pace, una di fronte all\'altra', x:50, y:47, min:3,
       testo:[
         'Siamo al centro della croce, dove la navata incontra il transetto. Guardate a destra e a sinistra: i due bracci si chiudono con due grandi rosoni, uno di fronte all\'altro.',
@@ -88,6 +89,7 @@ window.DOM = {
   fonti: [
     ['Diocesi di Linz, guida della chiesa (Kirchenführer)','https://www.dioezese-linz.at/dl/NmtNJKJlLolNJqx4KJK/kirchenfuehrer_als_datei.pdf'],
     ['Mariendom, le vetrate dipinte','https://dioezese-linz.at/site/mariendom/bauwerk/rundgang/article/43008.html'],
+    ['Mariendom, «Dalla bozza alla Finestra di Linz di oggi» (2022)','https://www.dioezese-linz.at/mariendom/blog/von-der-skizze-bis-zum-heutigen-linzer-fenster'],
     ['Mariendom, la corona di cappelle','https://www.dioezese-linz.at/mariendom/erleben/kapellenkranz'],
     ['Mariendom, l\'altare a baldacchino','https://www.dioezese-linz.at/mariendom/erleben/baldachinaltar'],
     ['Mariendom, la cripta','https://www.dioezese-linz.at/mariendom/erleben/krypta'],
@@ -144,7 +146,7 @@ window.DOM.ieriOggi={
 /* Gioco facoltativo "Indovina il dettaglio": una domanda per zona, risposte dal testo della zona */
 window.DOM.gioco=[
  {d:'L\'organo sopra la porta: come funziona?',o:['Con un computer','Con leve e tiranti','Con un motore elettrico'],r:1,p:'È uno dei più grandi organi meccanici del mondo: tasti, leve e tiranti, senza elettricità a fare il lavoro.'},
- {d:'Chi compare in alcune vetrate, accanto ai santi?',o:['Gli operai del cantiere','I benefattori che pagarono le finestre','I re d\'Austria'],r:1,p:'I loro volti furono dipinti copiando le fotografie: cercate baffi e colletti dell\'epoca.'},
+ {d:'Chi compare in alcune vetrate, accanto ai santi?',o:['Gli operai del cantiere','I benefattori che pagarono le finestre','Gli architetti del Duomo'],r:1,p:'I loro volti furono dipinti copiando le fotografie: cercate baffi e colletti dell\'epoca.'},
  {d:'Nel rosone della pace, cosa ha preso il posto dei simboli distrutti in guerra?',o:['Vescovi e canonici del Duomo','Colombe e rami d\'ulivo','Gli stemmi delle città austriache'],r:0,p:'I simboli di pace furono distrutti nella Seconda guerra mondiale e sostituiti con figure di vescovi e canonici.'},
  {d:'Chi sta in cima al baldacchino alto 15 metri?',o:['San Pietro con le chiavi','Il vescovo Rudigier','La Madonna Immacolata'],r:2,p:'Il Duomo è dedicato all\'Immacolata Concezione: per questo lei sta più in alto di tutti.'},
  {d:'La statua in bronzo del vescovo Rudigier disteso: è la sua tomba?',o:['Sì, è sepolto proprio lì sotto','No, è un monumento: la tomba è nella cripta','No, è sepolto a Vienna'],r:1,p:'Rudigier riposa nella cripta, al centro, insieme agli altri vescovi di Linz.'},
@@ -154,6 +156,7 @@ window.DOM.gioco=[
 /* Foto vere (Wikimedia Commons). pos = punto da tenere al centro quando la foto viene ritagliata */
 window.DOM.foto={
  esterno:{src:'foto/esterno.jpg',pos:'60% 45%',cap:'Il Mariendom visto dal Domplatz. La torre è in restauro.',autore:'Leonhard Lenz',licenza:'CC0',link:'https://commons.wikimedia.org/wiki/File:Mariendom_Linz_2023-09-29_01.jpg',anno:'2023'},
+ finestra:{src:'foto/finestra.jpg',pos:'50% 40%',cap:'Beethoven e Bruckner sulla stessa lastra della «Finestra di Linz».',autore:'Wolfgang Sauber, ritaglio di Blutgretchen',licenza:'CC BY-SA 3.0',licUrl:'https://creativecommons.org/licenses/by-sa/3.0/',link:'https://commons.wikimedia.org/wiki/File:Linzer_Dom_-_Fenster_-_Beethoven_und_Bruckner_deriv_bg.jpg',solo:'web'},
  navata:{src:'foto/navata.jpg',pos:'50% 62%',cap:'La navata centrale verso il coro.',autore:'Uoaei1',licenza:'CC BY-SA 4.0',licUrl:'https://creativecommons.org/licenses/by-sa/4.0/',link:'https://commons.wikimedia.org/wiki/File:Linz_Neuer_Dom_Innenraum_01.jpg',anno:'2018'},
  altare:{src:'foto/altare.jpg',pos:'50% 48%',cap:'L\'altare maggiore con il baldacchino e la croce.',autore:'Zairon',licenza:'CC BY-SA 3.0',licUrl:'https://creativecommons.org/licenses/by-sa/3.0/',link:'https://commons.wikimedia.org/wiki/File:Linz_Neuer_Dom_Innen_Altar_1.JPG',anno:'2012'},
  ieri:{src:'foto/ieri-1898.jpg',cap:'Il Duomo verso il 1898, visto dal lato del coro: la torre è ancora un cantiere, chiusa dalle impalcature.',autore:'Adolf Nunwarz (1868–1931)',licenza:'Pubblico dominio',link:'https://commons.wikimedia.org/wiki/File:Adolf_Nunwarz_-_Der_neue_Marien-Dom.jpg',anno:'1898 circa'},

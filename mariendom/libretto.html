@@ -158,7 +158,7 @@ h+=`<section class="pg"><div class="kick">LA STORIA IN BREVE</div><h2 style="fon
 h+=`<section class="pg"><div class="kick">FONTI E CREDITI</div><h2 style="font-size:20pt;margin:2mm 0 3mm">Da dove vengono le notizie</h2>
 <p style="font-size:10pt">Tutti i fatti vengono dalle pagine ufficiali della Diocesi di Linz, salvo dove indicato. I punti segnati <span class="v">da verificare</span> vanno controllati con il Domcenter (domcenter@dioezese-linz.at, +43 732 946100).</p>
 <ul class="src">${D.fonti.map(x=>`<li>${esc(x[0])}<br>${esc(x[1])}</li>`).join('')}</ul>
-<div class="sec">${I.foto}Crediti delle foto</div><ul class="src">${Object.values(D.foto||{}).filter((p,i,a)=>a.findIndex(q=>q.link===p.link)===i).map(p=>`<li>${esc(p.cap.split('.')[0].split(':')[0])}: ${esc(p.autore)}, ${esc(p.licenza)}${p.licUrl?' ('+esc(p.licUrl)+'), ritagliata':''}. ${esc(p.link)}</li>`).join('')}</ul>
+<div class="sec">${I.foto}Crediti delle foto</div><ul class="src">${Object.values(D.foto||{}).filter(p=>p.solo!=='web').filter((p,i,a)=>a.findIndex(q=>q.link===p.link)===i).map(p=>`<li>${esc(p.cap.split('.')[0].split(':')[0])}: ${esc(p.autore)}, ${esc(p.licenza)}${p.licUrl?' ('+esc(p.licUrl)+'), ritagliata':''}. ${esc(p.link)}</li>`).join('')}</ul>
 <div class="grow"></div>${foot()}</section>`;
 
 /* soluzioni del gioco */
