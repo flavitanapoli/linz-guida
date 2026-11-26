@@ -1,0 +1,248 @@
+<meta charset="utf-8">
+<title>Tappa pilota Mariendom</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Alegreya+SC:wght@700&display=swap" rel="stylesheet">
+<style>
+/* VOICE everyday e raccolto: la guida di un pellegrinaggio per adulti e anziani, tappa pilota
+   IDEA il foglio di sala di una cattedrale: fuori i capitoli da ascoltare, dentro una pianta con le zone numerate come le cappelle
+   PICTURE la facciata disegnata in alto; dentro, la pianta grande con i numeri da toccare
+   COLOUR bianco, inchiostro scuro, rosso Linz per i numeri e i comandi, oro per vetrate e dettagli
+   TYPE Alegreya SC per i titoli + Atkinson Hyperlegible per leggere bene
+   LAYOUT telefono: barra ritrovo, facciata, capitoli fuori, pianta, zone in fila, pranzo, fonti; a 720px+ la pianta resta fissa accanto alle zone */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#16110f);--ink:light-dark(#1b1513,#f3ece8);--soft:light-dark(#5e534f,#c4b8b2);--red:light-dark(#b0152b,#ff6b7a);--redbg:light-dark(#b0152b,#5a0d17);--gold:light-dark(#8a6200,#e6b84a);--panel:light-dark(#f7f2f0,#221a17);--line:light-dark(#e4d9d5,#3b2f2b);--fs:19px}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{font-size:var(--fs)}
+body{background:var(--bg);color:var(--ink);font:1rem/1.6 "Atkinson Hyperlegible",system-ui,sans-serif;overflow-x:clip;margin:0}
+body::before{content:"";position:fixed;top:0;left:0;right:0;height:env(safe-area-inset-top,0px);background:var(--redbg);z-index:20}
+.g{padding-left:max(5vw,16px,env(safe-area-inset-left,0px));padding-right:max(5vw,16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1000px;margin:0 auto}
+h1,h2{font-family:"Alegreya SC",Georgia,serif;line-height:1.08;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(2.1rem,8vw,3.2rem)}
+h2{font-size:clamp(1.6rem,6vw,2.2rem);margin-top:1.6em}
+h3{font-size:1.15rem;margin:0}
+p{margin:.55em 0}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:var(--red)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--redbg);color:#fff;padding-block:10px}
+.bar .wrap{display:flex;align-items:center;gap:12px}
+.bar .w{flex:1;line-height:1.25}
+.bar small{display:block;font-size:.78rem;opacity:.85}
+.sz{display:flex;gap:6px}
+.sz button{background:#fff2;border:1px solid #fff6;color:#fff;border-radius:10px;min-width:48px;height:44px;font-weight:700}
+.hero svg{display:block;width:100%;height:auto;max-height:46vh;object-fit:cover}
+.head{padding-block:18px 4px}
+.kick{color:var(--red);font-weight:700}
+.meta{color:var(--soft)}
+.pill{display:inline-block;background:var(--panel);border-radius:10px;padding:4px 10px;margin:4px 6px 0 0;font-size:.85rem}
+.ch{border-top:1px solid var(--line);padding:16px 0}
+.ch-h{display:flex;align-items:center;gap:12px}
+.ch-h h3{flex:1}
+.play{border:2px solid var(--red);background:var(--red);color:var(--bg);border-radius:14px;min-height:56px;min-width:56px;padding:0 16px;font-weight:700;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.play.on{background:var(--gold);border-color:var(--gold);color:#fff}
+.ch .txt p.on{background:color-mix(in srgb,var(--gold) 22%,transparent);border-radius:6px}
+.tag{font-size:.75rem;font-weight:700;color:var(--gold);border:1px solid var(--gold);border-radius:6px;padding:0 5px;white-space:nowrap}
+.warn{background:var(--panel);border-left:5px solid var(--red);border-radius:0 12px 12px 0;padding:12px 14px;margin:14px 0}
+.inside{display:grid;gap:18px}
+.planbox{position:relative;background:var(--panel);border-radius:16px;padding:10px;max-width:440px;margin:0 auto;width:100%}
+.planbox .p{position:relative}
+.planbox svg{display:block;width:100%;height:auto}
+.mk{position:absolute;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;border:3px solid #fff;background:var(--red);color:#fff;font-weight:700;font-size:1.05rem;box-shadow:0 1px 4px #0006}
+.mk.on{background:var(--gold)}
+.mk.opz{background:var(--soft)}
+.planbox .cap{font-size:.8rem;color:var(--soft);margin:6px 4px 0}
+.zone{border:2px solid var(--line);border-radius:16px;margin:0 0 12px;overflow:hidden;scroll-margin-top:90px}
+.zone.on{border-color:var(--gold)}
+.zh{display:flex;align-items:center;gap:12px;width:100%;background:none;border:0;text-align:left;padding:14px}
+.zh .n{flex:none;width:2.3rem;height:2.3rem;border-radius:50%;background:var(--red);color:var(--bg);display:grid;place-items:center;font-weight:700}
+.zh small{display:block;color:var(--soft);font-weight:400;font-size:.85rem}
+.zh .ar{margin-left:auto;font-size:1.4rem;color:var(--soft)}
+.zb{padding:0 14px 16px}
+.zb .play{margin:4px 0 8px}
+.look{background:var(--panel);border-radius:12px;padding:10px 14px;margin-top:10px}
+.look b{display:block;margin-bottom:4px}
+.look label{display:flex;gap:10px;align-items:flex-start;padding:6px 0;min-height:44px}
+.look input{width:24px;height:24px;flex:none;accent-color:var(--red);margin-top:2px}
+.walk{background:var(--redbg);color:#fff;border-radius:16px;padding:16px;margin:22px 0}
+.walk a{color:#fff}
+.walk .tag{color:#fff;border-color:#fff}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:60px;border-radius:14px;border:2px solid var(--ink);color:var(--ink);text-decoration:none;font-weight:700;padding:8px 16px;margin:10px 0}
+.ba{position:relative;overflow:hidden;touch-action:pan-y;background:#ddd}
+.ba svg{display:block;width:100%;height:auto}
+.ba .old{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--x,50%)) 0 0)}
+.ba .knob{position:absolute;top:0;bottom:0;left:var(--x,50%);width:4px;margin-left:-2px;background:#fff;box-shadow:0 0 4px #0008;pointer-events:none}
+.ba .knob::after{content:"⟷";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:#fff;color:#222;display:grid;place-items:center;font-size:24px;box-shadow:0 1px 6px #0006}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba .lab{position:absolute;top:10px;padding:3px 10px;border-radius:8px;background:#000b;color:#fff;font-size:.8rem;font-weight:700;pointer-events:none}
+.bacap{font-size:.8rem;color:var(--soft);margin:6px 0 0}
+.gps{border:2px solid var(--line);border-radius:16px;padding:14px;margin:14px 0}
+.gps h3{display:flex;align-items:center;gap:8px}
+.gps .dist{font-size:1.6rem;font-weight:700;color:var(--red)}
+.gps button{border:2px solid var(--red);background:var(--bg);color:var(--red);border-radius:14px;min-height:52px;padding:0 16px;font-weight:700;margin:8px 8px 0 0}
+.gps button.pri{background:var(--red);color:var(--bg)}
+.arr{position:fixed;inset:0;z-index:30;background:#000a;display:grid;place-items:end center;padding:16px;padding-bottom:max(16px,env(safe-area-inset-bottom,0px))}
+.arr[hidden]{display:none!important}
+.arr .card{background:var(--bg);border-radius:20px;padding:22px;max-width:520px;width:100%;box-shadow:0 10px 40px #0007}
+.arr .card h2{margin:4px 0 10px}
+.arr .big{width:100%;min-height:72px;font-size:1.25rem;border:0;border-radius:16px;background:var(--red);color:var(--bg);font-weight:700}
+.arr .later{width:100%;min-height:52px;margin-top:10px;background:none;border:2px solid var(--line);border-radius:14px;font-weight:700}
+.src{font-size:.85rem;color:var(--soft)}
+.mk{opacity:0}
+.prog{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px;margin:0 0 10px}
+.prog span{border-top:5px solid var(--line);padding-top:3px;font-size:.62rem;color:var(--soft);text-align:center;line-height:1.1;overflow:hidden;text-overflow:ellipsis}
+.prog .d{border-color:color-mix(in srgb,var(--red) 45%,var(--line));color:var(--red)}
+.prog .c{border-color:var(--red);color:var(--red);font-weight:700}
+.quiz{border:1.5px solid var(--red);border-radius:12px;padding:12px;margin:12px 0}.quiz b{color:var(--red)}.quiz p{margin:6px 0}.quiz button{display:block;width:100%;text-align:left;min-height:44px;margin:6px 0;padding:8px 12px;border-radius:10px;border:1px solid var(--soft);background:transparent;color:inherit;font:inherit}.quiz button.ok{border-color:#2e7d4f;background:color-mix(in srgb,#2e7d4f 14%,transparent);font-weight:600}.quiz button.no{border-color:var(--red);text-decoration:line-through}.quiz button:disabled{opacity:1}
+.slot .ico{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.6}
+.slot{border:2px dashed var(--soft);border-radius:12px;min-height:150px;display:grid;place-items:center;text-align:center;color:var(--soft);font-size:.85rem;padding:12px;margin:8px 0;background:repeating-linear-gradient(135deg,transparent 0 8px,color-mix(in srgb,var(--soft) 8%,transparent) 8px 16px)}
+.next{border-left:6px solid var(--red);padding:6px 0 6px 12px;margin-top:12px}
+.next b{display:block;color:var(--red)}
+.go{margin-top:8px;border:2px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:14px;min-height:52px;padding:0 16px;font-weight:700}
+.src li{margin:4px 0;overflow-wrap:anywhere}
+footer{padding-block:10px 40px}
+@media(min-width:760px){.inside{grid-template-columns:minmax(0,5fr) minmax(0,6fr);align-items:start}.planbox{position:sticky;top:90px}}
+</style>
+
+<div class="bar g" role="status"><div class="wrap">
+  <div class="w"><small>Prossimo ritrovo</small><span id="ritrovo">Sul sagrato del Mariendom, davanti alla torre</span></div>
+  <div class="sz"><button id="am" aria-label="Testo più piccolo">A−</button><button id="ap" aria-label="Testo più grande">A+</button></div>
+</div></div>
+
+<div class="hero" id="hero"></div>
+<div class="arr" id="arrDlg" hidden role="dialog" aria-modal="true" aria-labelledby="arrT"><div class="card"><div class="kick">Siete arrivati</div><h2 id="arrT">Mariendom</h2><p>Siamo davanti al Duomo. Radunatevi sul sagrato e ascoltate il primo capitolo.</p><button class="big" id="arrGo">▶ Ascolta: Guardate</button><button class="later" id="arrNo">Più tardi</button></div></div>
+<main>
+<section class="head g"><div class="wrap">
+  <div class="kick">Tappa 6 di 6 · Cammino Sonoro di Linz</div>
+  <h1 id="t">Mariendom</h1>
+  <p class="meta" id="st"></p>
+  <span class="pill" id="du"></span><span class="pill">Interno in piano, panche per sedersi</span>
+  <p id="arr"></p>
+</div></section>
+
+<section class="g"><div class="wrap">
+  <div class="gps" id="gps"></div>
+  <h2>Fuori, sul sagrato</h2>
+  <div id="fuori"></div>
+
+  <h2>Dentro il Duomo</h2>
+  <div class="warn" id="avv"></div>
+  <div class="inside">
+    <div class="planbox"><div class="p" id="plan" style="scroll-margin-top:90px"></div><p class="cap">Schema, non in scala. Toccate un numero. Rosso: dove siete · spunta: già viste · cerchio vuoto: la prossima. Il 7 è facoltativo.</p></div>
+    <div id="zone"></div>
+  </div>
+
+  <div class="walk" id="fine"></div>
+  <a class="btn" href="libretto.pdf">Libretto da stampare (PDF)</a>
+  <details><summary style="min-height:44px;display:flex;align-items:center;font-weight:700;cursor:pointer">Fonti e note sul pilota</summary>
+    <p class="src">Ogni fatto viene dalle pagine ufficiali della Diocesi di Linz, salvo dove indicato. I punti segnati <span class="tag">da verificare</span> vanno controllati sul posto o con il Domcenter (domcenter@dioezese-linz.at, +43 732 946100).</p>
+    <p class="src">I disegni sono provvisori: nel sito finale ci saranno foto vere da Wikimedia Commons, con i crediti. Anche la voce è provvisoria: ora legge la voce sintetica del telefono, nel sito finale ci sarà una voce registrata.</p>
+    <ul class="src" id="fonti"></ul>
+  </details>
+</div></section>
+<footer class="g"><div class="wrap src">Tappa pilota · prototipo, non ancora la versione definitiva</div></footer>
+</main>
+
+<script src="dati.js"></script>
+<script src="disegni.js"></script>
+<script>
+{
+const D=window.DOM,$=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=s=>esc(s).replace(/\[v(?::\s*([^\]]*))?\]/g,(m,t)=>' <span class="tag">da verificare</span>'+(t?' <span class="src">('+t+')</span>':''));
+const plain=s=>s.replace(/\[v[^\]]*\]/g,'');
+
+/* testo grande */
+let fs=19;try{fs=+localStorage.getItem('fsD')||19}catch(e){}
+const setFs=v=>{fs=Math.max(16,Math.min(26,v));document.documentElement.style.setProperty('--fs',fs+'px');try{localStorage.setItem('fsD',fs)}catch(e){}};
+setFs(fs);$('am').onclick=()=>setFs(fs-2);$('ap').onclick=()=>setFs(fs+2);
+
+/* intestazione */
+{const io=D.ieriOggi;$('hero').innerHTML=`<div class="ba" id="ba"><div>${DIS.esterno()}</div><div class="old">${DIS.cantiere()}</div><span class="lab" style="left:10px">Ieri</span><span class="lab" style="right:10px">Oggi</span><div class="knob"></div><input type="range" min="0" max="100" value="50" aria-label="Confronta ieri e oggi: trascinate"></div><p class="bacap g">Trascinate la maniglia per confrontare ieri e oggi. ${esc(io.nota)}</p>`;
+const ba=$('ba'),r=ba.querySelector('input');r.oninput=()=>ba.style.setProperty('--x',r.value+'%');}
+$('st').textContent=D.sottotitolo;$('du').textContent='Durata '+D.durata;$('arr').textContent=D.arrivo;
+$('avv').textContent=D.avviso;
+
+/* voce */
+const synth=window.speechSynthesis;let cur=null;
+const stop=()=>{try{synth&&synth.cancel()}catch(e){}if(cur){cur.btn.classList.remove('on');cur.btn.innerHTML=cur.lab;cur.box.querySelectorAll('p.on').forEach(p=>p.classList.remove('on'))}cur=null};
+const play=(btn,box,paras)=>{if(cur&&cur.btn===btn){stop();return}stop();
+ if(!synth){btn.textContent='Voce non disponibile';return}
+ cur={btn,box,lab:btn.innerHTML};btn.classList.add('on');btn.innerHTML='❚❚ Pausa';
+ const ps=box.querySelectorAll('.txt p');let i=0;const me=cur;
+ const v=(synth.getVoices()||[]).find(x=>/^it/i.test(x.lang));
+ const go=()=>{if(cur!==me)return;ps.forEach((p,j)=>p.classList.toggle('on',j===i));if(i>=paras.length){stop();return}
+  const u=new SpeechSynthesisUtterance(plain(paras[i]));u.lang='it-IT';if(v)u.voice=v;u.rate=.92;u.onend=()=>{i++;go()};u.onerror=()=>stop();synth.speak(u)};
+ go()};
+
+/* fuori */
+$('fuori').innerHTML=D.fuori.map(c=>`<div class="ch" id="${c.id}"><div class="ch-h"><h3>${esc(c.titolo)} <span class="meta" style="font-weight:400">· ${c.min} min</span></h3><button class="play">▶ Ascolta</button></div><div class="txt">${c.testo.map(p=>`<p>${fmt(p)}</p>`).join('')}</div></div>`).join('');
+D.fuori.forEach(c=>{const box=$(c.id);box.querySelector('.play').onclick=e=>play(e.currentTarget,box,c.testo)});
+
+/* pianta + zone */
+const visti=new Set();let curZ=0;
+const drawPlan=()=>{$('plan').innerHTML=DIS.nav(curZ,{labels:true,acc:getComputedStyle(document.body).getPropertyValue('--red').trim()||'#b0152b'})+D.zone.map(z=>`<button class="mk${z.opz?' opz':''}" style="left:${z.x}%;top:${z.y}%" data-n="${z.n}" aria-label="Zona ${z.n}: ${esc(z.nome)}">${z.n}</button>`).join('');document.querySelectorAll('.mk').forEach(m=>m.onclick=()=>{stop();open(+m.dataset.n,true)})};
+drawPlan();
+let checks={};try{checks=JSON.parse(localStorage.getItem('chkD')||'{}')}catch(e){}
+$('zone').innerHTML=D.zone.map(z=>`<article class="zone" id="z${z.n}">
+ <button class="zh" aria-expanded="false"><span class="n" style="${z.opz?'background:var(--soft)':''}">${z.n}</span><span><h3>${esc(z.nome)}</h3><small>${esc(z.breve)} · ${z.min} min${z.opz?' · facoltativa':''}</small></span><span class="ar" aria-hidden="true">⌄</span></button>
+ <div class="zb" hidden><div class="prog">${D.zone.map(y=>`<span data-p="${y.n}">${y.n}<br>${esc(y.corto)}</span>`).join('')}</div>${z.foto?`<div class="slot">${DIS.ico.foto}<br>Foto: ${esc(D.fotoSlot[z.foto])}<br>(Wikimedia Commons)</div>`:''}<button class="play">▶ Ascolta</button>
+ <div class="txt">${z.testo.map(p=>`<p>${fmt(p)}</p>`).join('')}</div>
+ <div class="look"><b>Cosa cercare</b>${z.cerca.map((c,k)=>`<label><input type="checkbox" data-k="${z.n}-${k}" ${checks[z.n+'-'+k]?'checked':''}><span>${fmt(c)}</span></label>`).join('')}</div>
+ ${(q=>q?`<div class="quiz" data-q="${z.n}"><b>Indovina il dettaglio</b><p>${esc(q.d)}</p>${q.o.map((o,i)=>`<button data-i="${i}">${'ABC'[i]}. ${esc(o)}</button>`).join('')}<p class="qr" hidden></p></div>`:'')(D.gioco&&D.gioco[z.n-1])}${z.nota?`<p class="src">${fmt(z.nota)}</p>`:''}<div class="next"><b>Dove andare dopo</b>${fmt(z.dopo)}${z.n<7?`<br><button class="go" data-go="${z.n+1}">Zona ${z.n+1}: ${esc(D.zone[z.n].corto)} →</button>`:''}</div><a href="#plan" class="src" style="display:inline-block;padding:10px 0;min-height:44px">↑ Torna alla pianta</a></div></article>`).join('');
+const open=(n,scroll,quiet)=>{if(curZ&&n&&!quiet)visti.add(curZ);curZ=quiet?0:(n||curZ);drawPlan();document.querySelectorAll('.prog span').forEach(sp=>{const k=+sp.dataset.p;sp.className=k===n?'c':(visti.has(k)||k<n)?'d':''});D.zone.forEach(z=>{const a=$('z'+z.n),on=z.n===n;a.classList.toggle('on',on);a.querySelector('.zb').hidden=!on;a.querySelector('.zh').setAttribute('aria-expanded',on)});
+ document.querySelectorAll('.mk').forEach(m=>m.classList.toggle('on',+m.dataset.n===n));
+ const z=D.zone.find(z=>z.n===n);if(!quiet){document.querySelector('.bar small').textContent=n?'Siete qui':'Prossimo ritrovo';$('ritrovo').textContent=n?('Dentro il Duomo · zona '+n+': '+z.nome):'Sul sagrato del Mariendom, davanti alla torre'}
+ if(scroll&&n)$('z'+n).scrollIntoView({behavior:'smooth',block:'start'})};
+D.zone.forEach(z=>{const a=$('z'+z.n);a.querySelector('.zh').onclick=()=>{stop();open(a.classList.contains('on')?0:z.n,false)};a.querySelector('.play').onclick=e=>play(e.currentTarget,a,z.testo)});
+$('zone').addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g){stop();open(+g.dataset.go,true)}});
+$('zone').addEventListener('change',e=>{const k=e.target.dataset.k;if(!k)return;checks[k]=e.target.checked;try{localStorage.setItem('chkD',JSON.stringify(checks))}catch(err){}});
+open(1,false,true);
+let quiz={};try{quiz=JSON.parse(localStorage.getItem('quizD')||'{}')}catch(e){}
+const qShow=box=>{const n=+box.dataset.q,q=D.gioco[n-1],a=quiz[n];if(a==null)return;box.querySelectorAll('button').forEach((b,i)=>{b.disabled=true;b.className=i===q.r?'ok':(i===a?'no':'')});const r=box.querySelector('.qr');r.hidden=false;r.innerHTML=(a===q.r?'<b>Giusto!</b> ':'<b>Era la '+'ABC'[q.r]+'.</b> ')+esc(q.p)};
+const qScore=()=>{const t=Object.keys(quiz).length,g=Object.entries(quiz).filter(([n,a])=>D.gioco[n-1].r===a).length;const el=$('qscore');if(el)el.textContent=t?`Indovina il dettaglio: ${g} ${g===1?'risposta giusta':'risposte giuste'} su ${t}.`:''};
+document.querySelectorAll('.quiz').forEach(box=>{qShow(box);box.addEventListener('click',e=>{const b=e.target.closest('button[data-i]');if(!b||b.disabled)return;quiz[box.dataset.q]=+b.dataset.i;try{localStorage.setItem('quizD',JSON.stringify(quiz))}catch(err){}qShow(box);qScore()})});
+
+
+/* finale */
+$('fine').innerHTML=`<h3 style="font-size:1.2rem">${esc(D.finale)}</h3><p id="qscore" class="g"></p><p style="margin-top:14px"><b>${esc(D.pranzo.nome)}</b></p><p>${fmt(D.pranzo.indirizzo)}</p><p>${fmt(D.pranzo.strada)}</p>`;
+qScore();$('fonti').innerHTML=D.fonti.map(f=>`<li><a href="${esc(f[1])}">${esc(f[0])}</a></li>`).join('');
+/* GPS: arrivo alla tappa. La posizione resta sul telefono: non viene salvata né inviata. */
+{
+const G=D.gps,box=$('gps');let watch=null,inside=0,arrived=false;
+try{arrived=sessionStorage.getItem('arrD')==='1'}catch(e){}
+const dist=(a,b,c,d)=>{const R=6371000,t=x=>x*Math.PI/180,dl=t(c-a),dn=t(d-b);const h=Math.sin(dl/2)**2+Math.cos(t(a))*Math.cos(t(c))*Math.sin(dn/2)**2;return 2*R*Math.asin(Math.sqrt(h))};
+const ico='<svg viewBox="0 0 20 20" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 18s6-5.6 6-10a6 6 0 0 0-12 0c0 4.4 6 10 6 10z"/><circle cx="10" cy="8" r="2.2"/></svg>';
+const view=(state,extra)=>{
+ if(state==='off')box.innerHTML=`<h3>${ico}Avviso di arrivo</h3><p>Se lo attivate, il telefono riconosce quando arrivate al Duomo e vi propone il racconto giusto. Usa il GPS <b>solo per questo</b>: la posizione resta sul telefono, non viene salvata né inviata a nessuno.</p><button class="pri" id="gOn">Attiva l'avviso di arrivo</button><button id="gSim">Prova: simula l'arrivo</button>`;
+ if(state==='wait')box.innerHTML=`<h3>${ico}Cerco la posizione…</h3><p>All'aperto ci vogliono pochi secondi.</p><button id="gOff">Spegni</button><button id="gSim">Simula l'arrivo</button>`;
+ if(state==='near')box.innerHTML=`<h3>${ico}Verso il Mariendom</h3><div class="dist">${extra.d} m</div><p class="src">Precisione circa ${extra.acc} m. ${extra.weak?'Segnale debole: aspetto una posizione migliore.':'Vi avviso appena arrivate.'}</p><button id="gOff">Spegni</button><button id="gSim">Simula l'arrivo</button>`;
+ if(state==='here')box.innerHTML=`<h3>${ico}Siete al Mariendom</h3><p>Ascoltate i capitoli qui sotto, poi entrate.</p><button id="gOff">Spegni il GPS</button>`;
+ if(state==='no')box.innerHTML=`<h3>${ico}Avviso di arrivo non disponibile</h3><p>${extra}</p><p>Nessun problema: seguite il capogruppo e usate i pulsanti della pagina.</p><button id="gSim">Simula l'arrivo</button>`;
+ const on=$('gOn'),off=$('gOff'),sim=$('gSim');
+ if(on)on.onclick=start;if(off)off.onclick=()=>{stopW();view('off')};if(sim)sim.onclick=()=>arrive(true);
+};
+const stopW=()=>{if(watch!==null&&navigator.geolocation)navigator.geolocation.clearWatch(watch);watch=null};
+const arrive=(sim)=>{arrived=true;try{sessionStorage.setItem('arrD','1')}catch(e){}
+ try{navigator.vibrate&&navigator.vibrate([250,120,250])}catch(e){}
+ $("arrDlg").hidden=false;$('arrGo').focus();view('here');if(!sim)stopW()};
+const start=()=>{
+ if(!('geolocation' in navigator)){view('no','Questo telefono o questa anteprima non permette di usare la posizione.');return}
+ view('wait');let gotFix=false;
+ setTimeout(()=>{if(!gotFix&&watch!==null&&!arrived)view('no','Il GPS non risponde. In questa anteprima la posizione è bloccata; nel sito vero funzionerà. Intanto potete provare con «Simula l\'arrivo».')},20000);
+ watch=navigator.geolocation.watchPosition(p=>{gotFix=true;
+   const c=p.coords,acc=Math.round(c.accuracy),d=Math.round(dist(c.latitude,c.longitude,G.tappa.lat,G.tappa.lon));
+   if(arrived){view('here');stopW();return}           // mai tornare indietro
+   const weak=acc>G.precisioneMax;
+   if(!weak && d<=G.tappa.raggio+Math.min(acc,30)){inside++; if(inside>=2){arrive(false);return}} else inside=0;  // servono 2 posizioni di fila
+   view('near',{d,acc,weak});
+ },e=>{if(e.code===1){stopW();view('no','Avete scelto di non condividere la posizione.')}else if(!arrived){view('wait')}},  // errori temporanei: si continua ad ascoltare
+ {enableHighAccuracy:true,maximumAge:5000,timeout:20000});
+};
+$('arrGo').onclick=()=>{$("arrDlg").hidden=true;const b=document.querySelector('#f1 .play');b&&b.click();$('f1').scrollIntoView({behavior:'smooth',block:'start'})};
+$('arrNo').onclick=()=>{$("arrDlg").hidden=true};
+view(arrived?'here':'off');
+}
+}
+</script>

@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><title>Libretto Mariendom</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Alegreya+SC:wght@700&family=Alegreya:wght@700&display=swap" rel="stylesheet">
+<style>
+/* Sistema editoriale replicabile per tutte le tappe: A5, pagina bianca da stampare su carta avorio,
+   bordeaux per numeri e percorso, grigio caldo per tutto il resto. */
+@page{size:148mm 210mm;margin:0}
+:root{--acc:#7d1d2c;--grey:#6f655d;--light:#d9d1c7;--ivory:#f6f0e6;--ink:#231b18}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font:11.2pt/1.42 "Atkinson Hyperlegible","DejaVu Sans",Arial,sans-serif;color:var(--ink)}
+.pg{width:148mm;height:210mm;padding:11mm 12mm 0;position:relative;overflow:hidden;break-after:page;display:flex;flex-direction:column}
+h1,h2,h3{font-family:"Alegreya SC",Georgia,serif;margin:0;line-height:1.05;font-weight:700}
+.serif{font-family:"Alegreya",Georgia,serif}
+p{margin:0 0 .38em}
+.kick{font-size:8.5pt;letter-spacing:.02em;color:var(--acc);font-weight:700}
+.ico{width:12pt;height:12pt;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;vertical-align:-2pt;margin-right:4pt}
+.sec{font-weight:700;color:var(--acc);font-size:10pt;margin:3.2mm 0 1.2mm;display:flex;align-items:center}
+.top{display:block}
+.top .mini{float:right;width:30mm;margin:0 0 2mm 4mm}
+.big{font-family:"Alegreya",Georgia,serif;font-size:40pt;line-height:.9;color:var(--acc);font-weight:700}
+.top h2{font-size:19pt;margin-top:1.5mm}
+.meta{color:var(--grey);font-size:9.5pt;margin-top:2mm;display:flex;gap:10pt;flex-wrap:wrap}
+.mini{background:var(--ivory);border-radius:3mm;padding:1.5mm}
+.mini svg{width:100%;height:auto;display:block}
+.mini .cap{font-size:6.5pt;color:var(--grey);text-align:center;margin-top:.6mm;line-height:1.2}
+.slot{clear:none;border:1pt dashed var(--grey);border-radius:2.5mm;background:repeating-linear-gradient(135deg,#fff 0 6px,#f8f4ee 6px 12px);display:flex;align-items:center;justify-content:center;flex-direction:column;color:var(--grey);font-size:8.5pt;text-align:center;padding:2mm;margin:3mm 0 1mm}
+.slot b{color:var(--ink);font-weight:700;font-size:9pt}
+.look{clear:both;background:var(--ivory);border-radius:2.5mm;padding:2.2mm 3.5mm;margin-top:2mm}
+.look .sec{margin-top:0}
+.look div.i{padding:.6mm 0 .6mm 6mm;position:relative;font-size:10.5pt}
+.look div.i::before{content:"";position:absolute;left:0;top:1.9mm;width:3.2mm;height:3.2mm;border:1pt solid var(--ink);border-radius:.6mm}
+.quiz{border:1pt solid var(--acc);border-radius:2.5mm;padding:1.5mm 3.5mm;margin-top:2mm;font-size:9.8pt;line-height:1.35}
+.quiz .q{font-weight:700;color:var(--acc);font-size:9pt;letter-spacing:.04em}
+.quiz .o{display:flex;flex-wrap:wrap;gap:.6mm 4mm;margin-top:.8mm}
+.sol{transform:rotate(180deg);border:1pt solid var(--acc);border-radius:2.5mm;padding:3mm 4mm;margin-top:4mm}
+.sol div{padding:1.2mm 0;border-bottom:.5pt solid var(--light);font-size:9.8pt}
+.next{border-left:1.2mm solid var(--acc);padding:1.2mm 0 1.2mm 3mm;margin-top:3mm;font-size:10.5pt}
+.next .sec{margin:0 0 .6mm}
+.v{font-size:7.5pt;font-weight:700;color:#8a6200;border:.7pt solid #8a6200;border-radius:2pt;padding:0 2.5pt;white-space:nowrap}
+.vn{font-size:8pt;color:var(--grey)}
+.grow{flex:1}
+.prog{display:grid;grid-template-columns:repeat(7,1fr);gap:1mm;margin:3mm 0 0}
+.prog div{border-top:1.4mm solid var(--light);padding-top:1mm;font-size:6.8pt;color:var(--grey);line-height:1.15}
+.prog div b{display:block;font-size:8pt}
+.prog .d{border-color:#c9a3aa;color:var(--acc)}
+.prog .c{border-color:var(--acc);color:var(--acc);font-weight:700}
+.foot{display:flex;justify-content:space-between;font-size:7.5pt;color:var(--grey);border-top:.5pt solid var(--light);margin:2.5mm 0 0;padding:1.8mm 0 4.5mm}
+.cover{padding:0}
+.cover .band{background:var(--acc);color:#fff;padding:12mm 12mm 8mm}
+.cover h1{font-size:38pt}
+.cover .slot{margin:8mm 12mm 0;height:92mm}
+.cover .low{padding:6mm 12mm;color:var(--grey)}
+.box{border:1pt solid var(--light);border-radius:2.5mm;padding:3mm 4mm;margin:2.5mm 0}
+.legend{display:grid;grid-template-columns:auto 1fr;gap:1.6mm 3mm;align-items:center;font-size:10.5pt}
+.legend svg{width:12pt;height:12pt}
+.line{border-bottom:.7pt solid #9b918a;height:8mm}
+.plan{display:grid;grid-template-columns:62mm 1fr;gap:5mm;align-items:start;margin-top:3mm}
+.plan .mini{padding:2mm}
+.stops{font-size:10.5pt}
+.stops div{display:grid;grid-template-columns:7mm 1fr auto;gap:2mm;padding:1.6mm 0;border-bottom:.5pt solid var(--light)}
+.stops .n{width:6mm;height:6mm;border-radius:50%;background:var(--acc);color:#fff;font-weight:700;font-size:8.5pt;display:grid;place-items:center}
+.stops .n.o{background:var(--grey)}
+.stops small{color:var(--grey)}
+ul.src{font-size:8.3pt;padding-left:4mm;margin:1mm 0}
+ul.src li{margin:0 0 1mm;overflow-wrap:anywhere}
+</style></head><body>
+<div id="out"></div>
+<script src="dati.js"></script>
+<script src="disegni.js"></script>
+<script>
+{
+const D=window.DOM,I=DIS.ico,Z=D.zone;
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=s=>esc(s).replace(/\[v(?::\s*([^\]]*))?\]/g,(m,t)=>' <span class="v">da verificare</span>'+(t?' <span class="vn">('+t+')</span>':''));
+const P=t=>t.map(p=>`<p>${fmt(p)}</p>`).join('');
+let page=0;
+const foot=()=>{page++;return `<div class="foot"><span>Mariendom · Guida alla visita</span><span>${page}</span></div>`};
+const slot=(k,h)=>`<div class="slot" style="height:${h}mm">${I.foto}<b>Foto: ${esc(D.fotoSlot[k]||k)}</b><span>Wikimedia Commons, con autore e licenza</span></div>`;
+const prog=cur=>`<div class="prog">${Z.map(z=>`<div class="${z.n<cur?'d':z.n===cur?'c':''}"><b>${z.n<cur?'✓ ':''}${z.n}</b>${esc(z.corto)}</div>`).join('')}</div>`;
+const head=(z,cont)=>`<div class="kick">CAMMINO SONORO DI LINZ · TAPPA 6 · DENTRO IL DUOMO</div>
+<div class="top"><div class="mini">${DIS.nav(z.n)}<div class="cap">Siete qui: ${z.n}${z.n<7?' · poi '+(z.n+1):''}</div></div><div><div class="big">${String(z.n).padStart(2,'0')}</div><h2>${esc(z.nome)}${cont?' <span style="font-size:11pt;color:var(--grey)">(continua)</span>':''}</h2>
+<div class="meta"><span>${I.tempo}${z.min} minuti</span><span>Zona ${z.n} di 7${z.opz?' · facoltativa':''}</span></div></div>`;
+const tail=z=>`</div><div class="look"><div class="sec">${I.cerca}Cosa cercare</div>${z.cerca.map(c=>`<div class="i">${fmt(c)}</div>`).join('')}</div>
+${(q=>q?`<div class="quiz"><div class="q">? INDOVINA IL DETTAGLIO</div>${esc(q.d)}<div class="o">${q.o.map((o,i)=>`<span>☐ ${'ABC'[i]}. ${esc(o)}</span>`).join('')}</div></div>`:'')(D.gioco&&D.gioco[z.n-1])}
+<div class="next"><div class="sec">${I.dopo}Dove andare dopo</div>${fmt(z.dopo)}</div>`;
+let h='';
+
+/* 1 copertina */
+h+=`<section class="pg cover"><div class="band"><div class="kick" style="color:#f3d9dd">CAMMINO SONORO DI LINZ · TAPPA 6 DI 6</div><h1>Mariendom</h1><div class="serif" style="font-size:14pt;margin-top:2mm">${esc(D.sottotitolo)}</div></div>
+${slot('esterno',92)}<div class="low"><p>Guida alla visita per il gruppo della parrocchia.<br>Fuori sul sagrato, poi sette zone dentro il Duomo.</p></div>
+<div class="grow"></div><div style="padding:0 12mm">${(()=>{page++;return '<div class="foot" style="border:0"><span></span><span></span></div>'})()}</div></section>`;
+
+/* 2 come si usa */
+h+=`<section class="pg"><div class="kick">PRIMA DI COMINCIARE</div><h2 style="font-size:20pt;margin:2mm 0 3mm">Come si usa questo libretto</h2>
+<p>Il capogruppo vi dice dove siamo. Ogni zona del Duomo ha la sua pagina, con un numero grande e una piccola pianta in alto a destra.</p>
+<div class="box legend">
+<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="#7d1d2c"/></svg><span><b>Rosso pieno:</b> la zona dove siamo ora</span>
+<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="#fff" stroke="#7d1d2c" stroke-width="2"/><path d="M8 12l3 3 5-6" stroke="#7d1d2c" stroke-width="2.2" fill="none"/></svg><span><b>Spuntato:</b> zone già viste</span>
+<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="#fff" stroke="#6f655d" stroke-width="2.4"/></svg><span><b>Cerchio vuoto:</b> la prossima zona</span>
+<svg viewBox="0 0 24 24"><line x1="2" y1="12" x2="22" y2="12" stroke="#7d1d2c" stroke-width="3" stroke-dasharray="5 4"/></svg><span><b>Tratteggio rosso:</b> la strada da fare adesso</span>
+</div>
+<div class="box legend" style="grid-template-columns:auto 1fr">
+${I.ascolta}<span><b>Il racconto:</b> lo stesso testo che si ascolta</span>
+${I.cerca}<span><b>Cosa cercare:</b> dettagli da trovare con gli occhi</span>
+${I.dopo}<span><b>Dove andare dopo:</b> come raggiungere la zona successiva</span>
+<b style="color:var(--acc);font-size:13pt;text-align:center">?</b><span><b>Indovina il dettaglio:</b> un piccolo gioco per zona, per chi vuole. Soluzioni in fondo, a testa in giù</span>
+${I.tempo}<span><b>Minuti:</b> quanto ci fermiamo in ogni zona</span>
+</div>
+<div class="box" style="border-color:var(--acc)"><div class="sec" style="margin-top:0">In chiesa</div>${esc(D.avviso)}</div>
+<div class="grow"></div>${foot()}</section>`;
+
+/* 3 pianta generale */
+h+=`<section class="pg"><div class="kick">DENTRO IL DUOMO</div><h2 style="font-size:20pt;margin-top:2mm">Il percorso in sette zone</h2>
+<div class="plan"><div class="mini">${DIS.nav(0,{labels:true})}<div class="cap">Schema, non in scala. Si entra dal basso, sotto la torre.</div></div>
+<div class="stops">${Z.map(z=>`<div><span class="n${z.opz?' o':''}">${z.n}</span><span>${esc(z.nome)}${z.opz?'<br><small>facoltativa</small>':''}</span><small>${z.min} min</small></div>`).join('')}
+<p style="margin-top:3mm;font-size:9.5pt;color:var(--grey)">Durata ${esc(D.durata)}.</p></div></div>
+<div class="grow"></div>${foot()}</section>`;
+
+/* 4-5 fuori */
+const f=D.fuori;
+h+=`<section class="pg"><div class="kick">FUORI, SUL SAGRATO</div><h2 style="font-size:20pt;margin:2mm 0 1mm">${esc(f[0].titolo)}</h2><div class="meta" style="margin:0 0 2mm">${I.tempo}${f[0].min} minuti</div>
+${slot('esterno',42)}<div class="sec">${I.ascolta}Il racconto</div>${P(f[0].testo)}
+<h2 style="font-size:15pt;margin:3mm 0 1mm">${esc(f[2].titolo)}</h2>${P(f[2].testo)}
+<div class="grow"></div>${foot()}</section>`;
+h+=`<section class="pg"><div class="kick">FUORI, SUL SAGRATO</div><h2 style="font-size:20pt;margin:2mm 0 1mm">${esc(f[1].titolo)}</h2><div class="meta" style="margin:0 0 2mm">${I.tempo}${f[1].min} minuti</div>
+<div class="sec">${I.ascolta}Il racconto</div>${P(f[1].testo)}
+<div class="next"><div class="sec">${I.dopo}Dove andare dopo</div>Entrate tutti insieme dalla porta sotto la torre e fermatevi subito dopo l'ingresso: è la zona 1.</div>
+<div class="grow"></div>${foot()}</section>`;
+
+/* zone */
+Z.forEach(z=>{
+  if(z.split){
+    h+=`<section class="pg">${head(z)}${z.foto?slot(z.foto,28):''}<div class="sec">${I.ascolta}Il racconto</div>${P(z.testo.slice(0,z.split))}<p class="vn">Continua alla pagina seguente →</p></div><div class="grow"></div>${prog(z.n)}${foot()}</section>`;
+    h+=`<section class="pg">${head(z,true)}<div class="sec">${I.ascolta}Il racconto</div>${P(z.testo.slice(z.split))}${tail(z)}<div class="grow"></div>${prog(z.n)}${foot()}</section>`;
+  } else {
+    h+=`<section class="pg">${head(z)}${z.foto&&z.foto!=='presepe'?slot(z.foto,28):''}<div class="sec">${I.ascolta}Il racconto</div>${P(z.testo)}${tail(z)}<div class="grow"></div>${prog(z.n)}${foot()}</section>`;
+  }
+});
+
+/* dopo la visita */
+h+=`<section class="pg"><div class="kick">FINE DELLA VISITA</div><h2 style="font-size:20pt;margin:2mm 0 3mm">Dopo il Duomo</h2>
+<p class="serif" style="font-size:13pt">${esc(D.finale)}</p>
+<div class="next" style="margin-top:5mm"><div class="sec">${I.dopo}${esc(D.pranzo.nome)}</div><p>${fmt(D.pranzo.indirizzo)}</p><p>${fmt(D.pranzo.strada)}</p></div>
+<div class="box" style="margin-top:6mm"><div class="sec" style="margin-top:0">Se vi perdete</div><p>Restate dove siete e chiamate il capogruppo.</p>
+<p style="margin-top:3mm">Nome</p><div class="line"></div><p style="margin-top:3mm">Telefono</p><div class="line"></div></div>
+<div class="grow"></div>${foot()}</section>`;
+
+/* linea del tempo */
+h+=`<section class="pg"><div class="kick">LA STORIA IN BREVE</div><h2 style="font-size:20pt;margin:2mm 0 4mm">Settant'anni per un Duomo</h2>
+<div style="border-left:1.2mm solid var(--acc);padding-left:5mm">${D.cronologia.map(c=>`<div style="display:grid;grid-template-columns:15mm 1fr;gap:3mm;padding:1.7mm 0;border-bottom:.5pt solid var(--light)"><b class="serif" style="color:var(--acc);font-size:13pt">${c[0]}</b><span>${esc(c[1])}</span></div>`).join('')}</div>
+<div class="grow"></div>${foot()}</section>`;
+
+/* fonti */
+h+=`<section class="pg"><div class="kick">FONTI E CREDITI</div><h2 style="font-size:20pt;margin:2mm 0 3mm">Da dove vengono le notizie</h2>
+<p style="font-size:10pt">Tutti i fatti vengono dalle pagine ufficiali della Diocesi di Linz, salvo dove indicato. I punti segnati <span class="v">da verificare</span> vanno controllati con il Domcenter (domcenter@dioezese-linz.at, +43 732 946100).</p>
+<ul class="src">${D.fonti.map(x=>`<li>${esc(x[0])}<br>${esc(x[1])}</li>`).join('')}</ul>
+<div class="sec">${I.foto}Crediti delle foto</div><p style="font-size:9.5pt;color:var(--grey)">Da completare con autore e licenza di ogni foto (Wikimedia Commons).</p>
+<div class="grow"></div>${foot()}</section>`;
+
+/* soluzioni del gioco */
+if(D.gioco)h+=`<section class="pg"><div class="kick">IL GIOCO DEL DUOMO</div><h2 style="font-size:20pt;margin:2mm 0 3mm">Indovina il dettaglio: le soluzioni</h2>
+<p>Girate il libretto per leggerle. Niente sbirciate prima di aver visto il dettaglio con i vostri occhi!</p>
+<div class="sol">${D.gioco.map((q,i)=>`<div><b>Zona ${i+1}: ${'ABC'[q.r]}.</b> ${esc(q.o[q.r])}. ${esc(q.p)}</div>`).join('')}</div>
+<p style="margin-top:4mm;color:var(--grey);font-size:10pt">Quante ne avete indovinate? ___ su 7</p>
+<div class="grow"></div>${foot()}</section>`;
+/* appunti + retro: riempiono fino a un multiplo di 4 */
+const count=(h.match(/class="pg/g)||[]).length;
+let extra=(4-((count+1)%4))%4;
+for(let i=0;i<extra;i++)h+=`<section class="pg"><div class="kick">APPUNTI</div><h2 style="font-size:20pt;margin:2mm 0 4mm">Le vostre note</h2>${'<div class="line"></div>'.repeat(18)}<div class="grow"></div>${foot()}</section>`;
+h+=`<section class="pg" style="justify-content:flex-end"><div style="border-top:1.4mm solid var(--acc);padding-top:4mm;margin-bottom:14mm"><h2 style="font-size:16pt;color:var(--acc)">Cammino Sonoro di Linz</h2><p style="font-size:9.5pt;color:var(--grey)">Tappa pilota · prototipo del libretto, novembre 2026.<br>Stampare in A5 su carta avorio opaca, oppure due pagine per foglio A4.</p></div></section>`;
+document.getElementById('out').innerHTML=h;
+}
+</script></body></html>
