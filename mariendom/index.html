@@ -117,6 +117,21 @@ a{color:var(--red)}
 .src li{margin:4px 0;overflow-wrap:anywhere}
 footer{padding-block:10px 40px}
 @media(min-width:760px){.inside{grid-template-columns:minmax(0,5fr) minmax(0,6fr);align-items:start}.planbox{position:sticky;top:90px}}
+
+/* SCHERMATE: una alla volta */
+.step{display:none}.step.cur{display:block}
+body{padding-bottom:100px}
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;gap:8px;align-items:stretch;padding:10px max(12px,env(safe-area-inset-left)) calc(10px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--line);box-shadow:0 -4px 16px rgba(0,0,0,.12)}
+.nav button{min-height:64px;border-radius:16px;font:inherit;font-weight:800;font-size:1.05rem;padding:6px 12px}
+.nav #nb{flex:0 0 auto;background:transparent;border:2px solid var(--line);color:var(--ink)}
+.nav #nf{flex:1;background:var(--red);border:0;color:var(--bg);text-align:center;line-height:1.15}
+.nav #nf small{display:block;font-weight:600;font-size:.8rem;opacity:.9}
+.nav #nb[hidden]{display:none}
+.nav .nc{position:absolute;top:-26px;left:50%;transform:translateX(-50%);font-size:.8rem;color:var(--soft);background:var(--bg);padding:2px 10px;border-radius:10px;border:1px solid var(--line)}
+.leggi{margin:10px 0}.leggi>summary{display:inline-flex;align-items:center;min-height:48px;padding:6px 14px;border-radius:12px;border:2px solid var(--line);font-weight:700;cursor:pointer;list-style:none}.leggi>summary::-webkit-details-marker{display:none}.leggi[open]>summary{margin-bottom:8px}
+.xtra{margin:10px 0}.xtra>summary{display:flex;align-items:center;min-height:54px;padding:8px 14px;border-radius:12px;background:var(--panel);font-weight:700;cursor:pointer;list-style:none}.xtra>summary::-webkit-details-marker{display:none}.xtra[open]>summary{margin-bottom:10px}
+.zone{border:0;border-radius:0;margin:0}.zone .zh{pointer-events:none;padding:14px 0}.zone .zh .ar{display:none}.zone .zb{padding:0}.zone .go,.zone a[href="#plan"]{display:none!important}
+.stepk{margin-top:14px}
 </style>
 
 <div class="bar g" role="status"><div class="wrap">
@@ -161,9 +176,10 @@ footer{padding-block:10px 40px}
 </div></section>
 <footer class="g"><div class="wrap src">Cammino Sonoro di Linz · guida per il gruppo della parrocchia</div></footer>
 </main>
+<nav class="nav" id="nav" aria-label="Schermate"><span class="nc" id="nc"></span><button id="nb">← Indietro</button><button id="nf">Avanti →</button></nav>
 
-<script src="dati.js?v=25"></script>
-<script src="disegni.js?v=25"></script>
+<script src="dati.js?v=26"></script>
+<script src="disegni.js?v=26"></script>
 <script>
 {
 const D=window.DOM,$=id=>document.getElementById(id);
@@ -275,6 +291,52 @@ const start=()=>{
 $('arrGo').onclick=()=>{$("arrDlg").hidden=true;const b=document.querySelector('#f1 .play');b&&b.click();$('f1').scrollIntoView({behavior:'smooth',block:'start'})};
 $('arrNo').onclick=()=>{$("arrDlg").hidden=true};
 view(arrived?'here':'off');
+}
+
+/* SCHERMATE: una alla volta */
+{
+const main=document.querySelector('main'),head=document.querySelector('.head');
+const sec=[...main.querySelectorAll('section.g')].find(s=>!s.classList.contains('head'));
+const mk=(id,kick)=>{const s=document.createElement('section');s.className='step g';s.id=id;s.innerHTML='<div class="wrap">'+(kick?'<div class="kick stepk">'+kick+'</div>':'')+'</div>';main.appendChild(s);return s.firstChild};
+const xtra=(lab,el)=>{const d=document.createElement('details');d.className='xtra';d.innerHTML='<summary>'+lab+'</summary>';el.replaceWith(d);d.appendChild(el);return d};
+/* testi lunghi chiusi */
+document.querySelectorAll('.ch .txt, .zone .txt').forEach(t=>{const d=document.createElement('details');d.className='leggi';d.innerHTML='<summary>📖 Leggi il testo</summary>';t.replaceWith(d);d.appendChild(t)});
+/* zone sempre aperte dentro la loro schermata */
+document.querySelectorAll('.zone .zb').forEach(b=>b.hidden=false);
+const S=[];
+/* 0: inizio */
+const hero=$('hero'),w0=mk('s-inizio');
+w0.append(...head.querySelector('.wrap').childNodes);head.remove();
+const cam=$('cam');if(cam){xtra('♪ Perché «Cammino Sonoro»',cam)}
+const gps=$('gps');const gd=xtra('📍 Avviso di arrivo con il GPS',gps);(w0.querySelector('.mapd')||w0.lastChild).after(gd);
+const cuf=w0.querySelector('.cuf');cuf.after(hero);hero.querySelectorAll('.g').forEach(g=>g.classList.remove('g'));
+S.push({el:w0.parentNode,nome:'Inizio',bar:['Prossimo ritrovo','Sul sagrato del Mariendom, davanti alla torre']});
+/* capitoli fuori */
+D.fuori.forEach((c,k)=>{const w=mk('s-'+c.id,'Fuori, sul sagrato · '+(k+1)+' di '+D.fuori.length);w.appendChild($(c.id));S.push({el:w.parentNode,nome:c.titolo,bar:['Siete qui','Fuori, sul sagrato']})});
+/* ingresso */
+const wi=mk('s-dentro');const h2=[...sec.querySelectorAll('h2')].find(x=>/Dentro/.test(x.textContent));wi.append(h2,$('avv'),sec.querySelector('.planbox'));
+S.push({el:wi.parentNode,nome:'Entrate nel Duomo',bar:['Siete qui','All\'ingresso del Duomo']});
+/* zone */
+D.zone.forEach(z=>{const w=mk('s-z'+z.n);w.appendChild($('z'+z.n));S.push({el:w.parentNode,nome:'Zona '+z.n+': '+z.corto,zona:z.n})});
+/* fine */
+const wf=mk('s-fine');wf.append($('fine'),sec.querySelector('a.btn'),sec.querySelector('details:not(.xtra)'));const ft=document.querySelector('footer');if(ft)wf.appendChild(ft);
+S.push({el:wf.parentNode,nome:'Fine',bar:['Prossimo ritrovo','All\'ingresso sotto la torre']});
+sec.remove();
+/* navigazione */
+let at=0;
+const go=(i,first)=>{i=Math.max(0,Math.min(S.length-1,i));stop();S.forEach((s,k)=>s.el.classList.toggle('cur',k===i));at=i;const s=S[i];
+ if(s.zona)open(s.zona,false);else{open(0,false,true);document.querySelector('.bar small').textContent=s.bar[0];$('ritrovo').textContent=s.bar[1]}
+ $('nb').hidden=i===0;const n=S[i+1];$('nf').innerHTML=i===0?'Cominciamo →<small>Fuori, sul sagrato</small>':(n?'Avanti →<small>'+esc(n.nome)+'</small>':'Torna all\'inizio');
+ $('nc').textContent=(i+1)+' di '+S.length;
+ try{sessionStorage.setItem('stepD',i)}catch(e){}
+ if(!first)window.scrollTo(0,0)};
+$('nb').onclick=()=>go(at-1);$('nf').onclick=()=>go(at+1<S.length?at+1:0);
+/* i numeri sulla pianta portano alla schermata della zona */
+$('plan').addEventListener('click',e=>{const m=e.target.closest('.mk');if(!m)return;e.stopPropagation();e.preventDefault();go(S.findIndex(s=>s.zona===+m.dataset.n))},true);
+/* l'avviso di arrivo porta al primo capitolo */
+$('arrGo').onclick=()=>{$('arrDlg').hidden=true;go(1);const b=document.querySelector('#f1 .play');b&&b.click()};
+let st=0;try{st=+sessionStorage.getItem('stepD')||0}catch(e){}
+go(st,true);
 }
 }
 </script>
