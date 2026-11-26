@@ -180,7 +180,7 @@ window.DOM.foto.s2016={src:'foto/slider-oggi.jpg',cap:'Lo stesso panorama oggi, 
 window.DOM.ieriOggi.nota='Trascinate la linea: a sinistra il 1914, a destra oggi. La cartolina è stata adattata per sovrapporsi alla foto: le proporzioni sono indicative.';
 
 /* audio registrati (voce di Francesca). Le parti senza file usano la voce del telefono. */
-window.DOM.audio={f1:'audio/mariendom-01-guardate.mp3',f2:'audio/mariendom-02-storia.mp3',f3:'audio/mariendom-03-campane.mp3',z1:'audio/mariendom-z1-ingresso.mp3',z2:'audio/mariendom-z2-navata.mp3',z3:'audio/mariendom-z3-incrocio.mp3',z4:'audio/mariendom-z4-altare.mp3',z5:'audio/mariendom-z5-cappelle.mp3',z6:'audio/mariendom-z6-votiva.mp3',z7:'audio/mariendom-z7-cripta.mp3'};
+window.DOM.audio={f1:'audio/mariendom-01-guardate.mp3',f2:'audio/mariendom-02-storia.mp3',f3:'audio/mariendom-03-campane.mp3',z1:'audio/mariendom-z1-ingresso.mp3',z2:'audio/mariendom-z2-navata.mp3',z3:'audio/mariendom-z3-incrocio.mp3',z4:'audio/mariendom-z4-altare.mp3',z5:'audio/mariendom-z5-cappelle.mp3',z6:'audio/mariendom-z6-votiva.mp3',z7:'audio/mariendom-z7-cripta.mp3',cam:'audio/cammino-sonoro.mp3'};
 
 /* musica da ascoltare in una zona */
 window.DOM.musica={6:{src:'audio/bruckner-kyrie-1938.mp3',titolo:'Ascoltate Bruckner',testo:'L\'inizio del Kyrie della Messa in mi minore, la Messa scritta per questa cappella. Poco più di un minuto e mezzo.',cred:'Filarmonica di Amburgo, direttore Max Thurn, disco Telefunken del 1938. Pubblico dominio, da Wikimedia Commons.',link:'https://commons.wikimedia.org/wiki/File:PDP-CH_-_Philharmoniker_Hamburg,_Max_Thurn_-_Mass_No._2_in_E_minor,_WAB_27_-_1st_Movement,_Kyrie,_Part_1_-_Bruckner_-_Telefunken-e2607-023233.flac'}};
