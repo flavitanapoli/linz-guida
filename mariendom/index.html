@@ -182,7 +182,7 @@ body{padding-bottom:100px}
 <div class="arr" id="arrDlg" hidden role="dialog" aria-modal="true" aria-labelledby="arrT"><div class="card"><div class="kick">Siete arrivati</div><h2 id="arrT">Mariendom</h2><p>Siamo davanti al Duomo. Radunatevi sul sagrato e ascoltate il primo capitolo.</p><button class="big" id="arrGo">▶ Ascolta: Guardate</button><button class="later" id="arrNo">Più tardi</button></div></div>
 <main>
 <section class="head g"><div class="wrap">
-  <div class="kick">Tappa 6 di 6 · Cammino Sonoro di Linz</div>
+  <div class="kick"><a href="../" style="font-weight:700">← Tutte le tappe</a> · Tappa 6 di 6</div>
   <h1 id="t">Mariendom</h1>
   <p class="meta" id="st"></p>
   <span class="pill" id="du"></span><span class="pill">Interno in piano, panche per sedersi</span>
@@ -219,8 +219,8 @@ body{padding-bottom:100px}
 <div class="pov" id="pov" hidden role="dialog" aria-modal="true" aria-label="Pianta e indice"><div class="ph"><h2>Dove volete andare?</h2><button class="x" id="px" aria-label="Chiudi">✕</button></div><div id="pslot"></div><ol id="pidx"></ol></div>
 <nav class="nav" id="nav" aria-label="Schermate"><span class="nc" id="nc"></span><button id="nb">← Indietro</button><button id="np" aria-label="Pianta e indice">🗺<small>Pianta</small></button><button id="nf">Avanti →</button></nav>
 
-<script src="dati.js?v=32"></script>
-<script src="disegni.js?v=32"></script>
+<script src="dati.js?v=33"></script>
+<script src="disegni.js?v=33"></script>
 <script>
 {
 const D=window.DOM,$=id=>document.getElementById(id);
@@ -410,11 +410,11 @@ sec.remove();
 let at=0;
 const go=(i,first)=>{i=Math.max(0,Math.min(S.length-1,i));stop();S.forEach((s,k)=>s.el.classList.toggle('cur',k===i));at=i;const s=S[i];
  if(s.zona)open(s.zona,false);else{open(0,false,true);document.querySelector('.bar small').textContent=s.bar[0];$('ritrovo').textContent=s.bar[1]}
- $('nb').hidden=i===0;const n=S[i+1];$('nf').innerHTML=i===0?'Cominciamo →<small>Fuori, sul sagrato</small>':(n?'Avanti →<small>'+esc(n.nome)+'</small>':'Torna all\'inizio');
+ $('nb').hidden=i===0;const n=S[i+1];$('nf').innerHTML=i===0?'Cominciamo →<small>Fuori, sul sagrato</small>':(n?'Avanti →<small>'+esc(n.nome)+'</small>':'← Tutte le tappe');
  $('nc').textContent=(i+1)+' di '+S.length;
  try{sessionStorage.setItem('stepD',i)}catch(e){}
  if(!first)window.scrollTo(0,0)};
-$('nb').onclick=()=>go(at-1);$('nf').onclick=()=>go(at+1<S.length?at+1:0);
+$('nb').onclick=()=>go(at-1);$('nf').onclick=()=>{if(at+1<S.length)go(at+1);else location.href='../'};
 /* i numeri sulla pianta portano alla schermata della zona */
 $('plan').addEventListener('click',e=>{const m=e.target.closest('.mk');if(!m)return;e.stopPropagation();e.preventDefault();go(S.findIndex(s=>s.zona===+m.dataset.n))},true);
 /* l'avviso di arrivo porta al primo capitolo */
